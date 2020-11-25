@@ -52,12 +52,12 @@ public class CameraController : MonoBehaviour
             transform.Translate(xAxisValue * movementSpeed * Time.deltaTime, 0.0f, zAxisValue * movementSpeed * Time.deltaTime);
         }
         // Moving camera up
-        if(Input.GetKey(KeyCode.Q))
+        if(Input.GetKey(KeyCode.E))
         {
             transform.position += transform.up * movementSpeed * Time.deltaTime;
         }
         // Moving camera down
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.Q))
         {
             transform.position += -transform.up * movementSpeed * Time.deltaTime;
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerControllable
   - ComputerControllable
+  - Field
   layers:
   - Default
   - TransparentFX
