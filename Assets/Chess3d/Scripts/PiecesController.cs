@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PiecesController : MonoBehaviour
 {
-    private Piece selectedPiece;
+    private Piece selectedPiece = null;
     private GameObject selectedObject;
 
     private Color32 selectColor = new Color32(107, 230, 46, 255);
@@ -33,6 +33,18 @@ public class PiecesController : MonoBehaviour
                     selectedPiece = selectedObject.GetComponent<Piece>();
                     HandlePieceSelection();
                 }
+                else if (selectedObject.CompareTag("Field") && selectedPiece != null)
+                {
+                    Field selectedField = selectedObject.GetComponent<Field>();
+                    GameObject pieceClosestField = FindClosestObject(selectedPiece.gameObject, "Field");
+
+                    if (selectedField.Available && !selectedField.Equals(pieceClosestField.GetComponent<Field>()))
+                    {
+                        HandlePieceSelection();
+                        selectedPiece.MoveTo(selectedField);
+                        selectedPiece = null;
+                    }
+                }
             }
         }
     }
@@ -41,8 +53,8 @@ public class PiecesController : MonoBehaviour
 
     private void HandlePieceSelection()
     {
-        GameObject baseObj = selectedObject.transform.GetChild(0).gameObject;
-        GameObject closestField = FindClosestObject(selectedObject, "Field");
+        GameObject baseObj = selectedPiece.transform.GetChild(0).gameObject;
+        GameObject closestField = FindClosestObject(selectedPiece.gameObject, "Field");
         Color32 currentColor = baseObj.GetComponent<Renderer>().material.color;
 
         if (currentColor.Equals(selectColor)) // deselect piece
@@ -89,6 +101,7 @@ public class PiecesController : MonoBehaviour
 
         foreach(Field field in fields)
         {
+            field.Available = available;
             field.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = available;
         }
     }

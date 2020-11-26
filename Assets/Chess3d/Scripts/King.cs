@@ -15,7 +15,7 @@ public class King : Piece
     // Update is called once per frame
     protected override void Update()
     {
-        
+        base.Update();
     }
 
     public override List<Field> GetAvailableFields(Field startingField)
@@ -25,11 +25,9 @@ public class King : Piece
         fields = Field.FindObjectsOfType<Field>();
         
         Vector3 startingPosition = startingField.transform.position;
-
         foreach (Field field in fields)
         {
             Vector3 diff = field.transform.position - startingPosition;
-            
             if(Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance)
             {
                 availableFields.Add(field);

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Field : MonoBehaviour
 {
     public string color; // black or white
+    private bool available = false;
+
+    public bool Available { get => available; set => available = value; }
 
     // Start is called before the first frame update
     void Start()
