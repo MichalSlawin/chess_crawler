@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class King : Piece
 {
-    private float moveDistance = 2.1f;
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -21,8 +19,7 @@ public class King : Piece
     public override List<Field> GetAvailableFields()
     {
         List<Field> availableFields = new List<Field>();
-        Field[] fields;
-        fields = Field.FindObjectsOfType<Field>();
+        Field[] fields = Field.FindObjectsOfType<Field>(); ;
         
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Field field in fields)
@@ -40,5 +37,10 @@ public class King : Piece
         }
 
         return availableFields;
+    }
+
+    public override Field GetComputerFieldToMove()
+    {
+        throw new System.NotImplementedException();
     }
 }

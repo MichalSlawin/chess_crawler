@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Pawn : Piece
 {
-
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -20,8 +18,38 @@ public class Pawn : Piece
 
     public override List<Field> GetAvailableFields()
     {
-        List<Field> fields = new List<Field>();
+        List<Field> availableFields = new List<Field>();
+        Field[] fields = Field.FindObjectsOfType<Field>();
 
-        return fields;
+        Vector3 startingPosition = occupiedField.transform.position;
+        foreach (Field field in fields)
+        {
+            Vector3 diff = field.transform.position - startingPosition;
+            if (Mathf.Abs(diff.x) <= 0.1 && Mathf.Abs(diff.z) <= moveDistance && diff.z < 0)
+            {
+                availableFields.Add(field);
+            }
+        }
+
+        if (availableFields.Count > 1)
+        {
+            Debug.Log(availableFields.Count);
+            throw new System.Exception("Pawn cannot have more than 1 field available");
+        }
+
+        return availableFields;
+    }
+
+    public override Field GetComputerFieldToMove()
+    {
+        List<Field> fields = GetAvailableFields();
+        Field fieldToMove = null;
+
+        foreach(Field field in fields)
+        {
+            fieldToMove = field;
+        }
+
+        return fieldToMove;
     }
 }

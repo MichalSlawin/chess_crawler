@@ -51,11 +51,13 @@ public class PiecesController : MonoBehaviour
     {
         Piece selectedEnemy = selectedObject.GetComponent<Piece>();
 
-        if(selectedEnemy.occupiedField.Available)
+        if (selectedEnemy.occupiedField.Available)
         {
             HandlePieceSelection();
             selectedPiece.Attack(selectedEnemy);
             selectedPiece = null;
+
+            DoComputerMove();
         }
     }
 
@@ -70,6 +72,8 @@ public class PiecesController : MonoBehaviour
             HandlePieceSelection();
             selectedPiece.MoveTo(selectedField);
             selectedPiece = null;
+
+            DoComputerMove();
         }
     }
 
@@ -91,10 +95,10 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
+    // TODO: unused, should probably remove
     private GameObject FindClosestObject(GameObject startObject, string tag)
     {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag(tag);
+        GameObject[] gos = GameObject.FindGameObjectsWithTag(tag);
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = startObject.transform.position;
@@ -117,10 +121,23 @@ public class PiecesController : MonoBehaviour
     {
         List<Field> fields = selectedPiece.GetAvailableFields();
 
-        foreach(Field field in fields)
+        foreach (Field field in fields)
         {
             field.Available = available;
             field.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = available;
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void DoComputerMove()
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("ComputerControllable");
+
+        foreach (GameObject go in gos)
+        {
+            Piece enemy = go.GetComponent<Piece>();
+            enemy.MoveTo(enemy.GetComputerFieldToMove());
         }
     }
 }
