@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class King : Piece
 {
-    private float moveDistance = 2f;
+    private float moveDistance = 2.1f;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -18,13 +18,13 @@ public class King : Piece
         base.Update();
     }
 
-    public override List<Field> GetAvailableFields(Field startingField)
+    public override List<Field> GetAvailableFields()
     {
         List<Field> availableFields = new List<Field>();
         Field[] fields;
         fields = Field.FindObjectsOfType<Field>();
         
-        Vector3 startingPosition = startingField.transform.position;
+        Vector3 startingPosition = occupiedField.transform.position;
         foreach (Field field in fields)
         {
             Vector3 diff = field.transform.position - startingPosition;
@@ -33,6 +33,12 @@ public class King : Piece
                 availableFields.Add(field);
             }
         }
+
+        if(availableFields.Count > 9)
+        {
+            throw new System.Exception("King cannot have more than 9 fields available");
+        }
+
         return availableFields;
     }
 }

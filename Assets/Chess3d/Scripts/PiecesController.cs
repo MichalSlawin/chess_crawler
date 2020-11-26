@@ -35,15 +35,11 @@ public class PiecesController : MonoBehaviour
                 }
                 else if (selectedObject.CompareTag("Field") && selectedPiece != null)
                 {
-                    Field selectedField = selectedObject.GetComponent<Field>();
-                    GameObject pieceClosestField = FindClosestObject(selectedPiece.gameObject, "Field");
-
-                    if (selectedField.Available && !selectedField.Equals(pieceClosestField.GetComponent<Field>()))
-                    {
-                        HandlePieceSelection();
-                        selectedPiece.MoveTo(selectedField);
-                        selectedPiece = null;
-                    }
+                    HandleFieldSelection();
+                }
+                else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece != null)
+                {
+                    HandleEnemySelection();
                 }
             }
         }
@@ -51,23 +47,45 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
+    private void HandleEnemySelection()
+    {
+        Piece selectedEnemy = selectedObject.GetComponent<Piece>();
+
+        if(selectedEnemy.occupiedField.Available)
+        {
+            HandlePieceSelection();
+            selectedPiece.Attack(selectedEnemy);
+            selectedPiece = null;
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void HandleFieldSelection()
+    {
+        Field selectedField = selectedObject.GetComponent<Field>();
+
+        if (selectedField.Available && !selectedField.Occupied && !selectedField.Equals(selectedPiece.occupiedField))
+        {
+            HandlePieceSelection();
+            selectedPiece.MoveTo(selectedField);
+            selectedPiece = null;
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
     private void HandlePieceSelection()
     {
-        GameObject baseObj = selectedPiece.transform.GetChild(0).gameObject;
-        GameObject closestField = FindClosestObject(selectedPiece.gameObject, "Field");
-        Color32 currentColor = baseObj.GetComponent<Renderer>().material.color;
-
-        if (currentColor.Equals(selectColor)) // deselect piece
+        if (selectedPiece.Selected) // deselect piece
         {
-            baseObj.GetComponent<Renderer>().material.color = originalColor;
-
-            ChangeFieldsAvailability(closestField.GetComponent<Field>(), false);
+            selectedPiece.Selected = false;
+            ChangeFieldsAvailability(false);
         }
-        else if (currentColor.Equals(originalColor)) // select piece
+        else // select piece
         {
-            baseObj.GetComponent<Renderer>().material.color = selectColor;
-
-            ChangeFieldsAvailability(closestField.GetComponent<Field>(), true);
+            selectedPiece.Selected = true;
+            ChangeFieldsAvailability(true);
         }
     }
 
@@ -95,9 +113,9 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
-    private void ChangeFieldsAvailability(Field closestField, bool available)
+    private void ChangeFieldsAvailability(bool available)
     {
-        List<Field> fields = selectedPiece.GetAvailableFields(closestField);
+        List<Field> fields = selectedPiece.GetAvailableFields();
 
         foreach(Field field in fields)
         {

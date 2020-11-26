@@ -10,12 +10,15 @@ public class CameraController : MonoBehaviour
 
     float rotY = 0.0f;
 
+    private Vector3 cameraStartPosition;
+
     void Start()
     {
         if (GetComponent<Rigidbody>())
         {
             GetComponent<Rigidbody>().freezeRotation = true;
         }
+        cameraStartPosition = transform.position;
     }
 
     void Update()
@@ -44,7 +47,7 @@ public class CameraController : MonoBehaviour
         // Camera position reset
         if (Input.GetKey(KeyCode.U))
         {
-            gameObject.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            gameObject.transform.localPosition = cameraStartPosition;
         }
         // Moving camera in x and z axis
         if(xAxisValue != 0 || zAxisValue != 0)
