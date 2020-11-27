@@ -55,9 +55,9 @@ public class PiecesController : MonoBehaviour
         {
             HandlePieceSelection();
             selectedPiece.Attack(selectedEnemy);
-            selectedPiece = null;
 
-            DoComputerMove();
+            StartCoroutine(DoComputerMove(selectedPiece.moveTime));
+            selectedPiece = null;
         }
     }
 
@@ -71,9 +71,9 @@ public class PiecesController : MonoBehaviour
         {
             HandlePieceSelection();
             selectedPiece.MoveTo(selectedField);
+            
+            StartCoroutine(DoComputerMove(selectedPiece.moveTime));
             selectedPiece = null;
-
-            DoComputerMove();
         }
     }
 
@@ -95,28 +95,6 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
-    // TODO: unused, should probably remove
-    private GameObject FindClosestObject(GameObject startObject, string tag)
-    {
-        GameObject[] gos = GameObject.FindGameObjectsWithTag(tag);
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = startObject.transform.position;
-        foreach (GameObject go in gos)
-        {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
-        }
-        return closest;
-    }
-
-    //-----------------------------------------------------------------------------------------------------
-
     private void ChangeFieldsAvailability(bool available)
     {
         List<Field> fields = selectedPiece.GetAvailableFields();
@@ -130,14 +108,25 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
-    private void DoComputerMove()
+    private IEnumerator DoComputerMove(float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
+
         GameObject[] gos = GameObject.FindGameObjectsWithTag("ComputerControllable");
 
         foreach (GameObject go in gos)
         {
             Piece enemy = go.GetComponent<Piece>();
-            enemy.MoveTo(enemy.GetComputerFieldToMove());
+
+            Piece pieceToAttack = enemy.GetComputerPieceToAttack();
+            if (pieceToAttack != null)
+            {
+                enemy.Attack(pieceToAttack);
+            }
+            else
+            {
+                enemy.MoveTo(enemy.GetComputerFieldToMove());
+            }
         }
     }
 }

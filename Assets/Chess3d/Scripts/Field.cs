@@ -9,7 +9,6 @@ public class Field : MonoBehaviour
     private bool occupied = false;
 
     public bool Available { get => available; set => available = value; }
-
     public bool Occupied { get => occupied; set => occupied = value; }
 
     // Start is called before the first frame update

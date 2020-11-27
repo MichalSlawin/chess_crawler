@@ -43,4 +43,9 @@ public class King : Piece
     {
         throw new System.NotImplementedException();
     }
+
+    public override Piece GetComputerPieceToAttack()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -19,6 +19,7 @@ public abstract class Piece : MonoBehaviour
 
     private bool selected = false;
     public bool Selected { get => selected; set => selected = value; }
+    public bool IsDead { get => isDead; set => isDead = value; }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -50,7 +51,7 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void MoveTo(Field field)
     {
-        if(field != null && !isDead)
+        if(field != null && !field.Occupied && !IsDead)
         {
             occupiedField.Occupied = false;
             field.Occupied = true;
@@ -65,7 +66,7 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void Attack(Piece enemy)
     {
-        if(enemy != null && !isDead)
+        if(enemy != null && !IsDead)
         {
             enemy.Die();
             MoveTo(enemy.occupiedField);
@@ -81,6 +82,9 @@ public abstract class Piece : MonoBehaviour
         rigidbody.AddForce(new Vector3(0,10, forceDirection*20), ForceMode.Impulse);
         Destroy(this.gameObject, 5f);
         forceDirection *= -1;
-        isDead = true;
+        IsDead = true;
+        occupiedField.Occupied = false;
     }
+
+    public abstract Piece GetComputerPieceToAttack();
 }

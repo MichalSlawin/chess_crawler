@@ -52,4 +52,23 @@ public class Pawn : Piece
 
         return fieldToMove;
     }
+
+    public override Piece GetComputerPieceToAttack()
+    {
+        Piece[] pieces = Piece.FindObjectsOfType<Piece>();
+
+        Vector3 startingPosition = occupiedField.transform.position;
+        foreach (Piece piece in pieces)
+        {
+            if(piece.tag == "PlayerControllable")
+            {
+                Vector3 diff = piece.occupiedField.transform.position - startingPosition;
+                if (Mathf.Abs(diff.x) >= 1 && Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && diff.z < 0)
+                {
+                    return piece;
+                }
+            }
+        }
+        return null;
+    }
 }
