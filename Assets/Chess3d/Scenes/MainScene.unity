@@ -122,21 +122,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &106592338 stripped
+--- !u!114 &1660630 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5978716854362027117, guid: c149d1e7427d4c743911b8598e1d5ea0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2007518323}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3601fbde92346aa4182b3b7f4c5ad922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &157504632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7877633045480032457, guid: be275e4bc8265564a8fc39c438a18c90,
+  m_CorrespondingSourceObject: {fileID: 2533350855940028981, guid: be275e4bc8265564a8fc39c438a18c90,
     type: 3}
   m_PrefabInstance: {fileID: 3056528236136633292}
   m_PrefabAsset: {fileID: 0}
@@ -692,7 +680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.15974917, y: 0.68882525, z: -0.15974918, w: 0.68882525}
-  m_LocalPosition: {x: 22.93, y: 7.36, z: -8.86}
+  m_LocalPosition: {x: -1.77, y: 9.31, z: 6.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -713,6 +701,18 @@ MonoBehaviour:
   movementSpeed: 10
   mouseSensitivityX: 4
   mouseSensitivityY: 4
+--- !u!114 &979383134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6927446921032147437, guid: be275e4bc8265564a8fc39c438a18c90,
+    type: 3}
+  m_PrefabInstance: {fileID: 3056528236136633292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3601fbde92346aa4182b3b7f4c5ad922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1139655918 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7877633045624316029, guid: be275e4bc8265564a8fc39c438a18c90,
@@ -773,14 +773,14 @@ PrefabInstance:
     - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: occupiedField
       value: 
-      objectReference: {fileID: 157504632}
+      objectReference: {fileID: 979383134}
     - target: {fileID: 1562622190837322, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_Name
       value: Black Stone Rook
       objectReference: {fileID: 0}
     - target: {fileID: 4843305581340572, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4843305581340572, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_LocalPosition.y
@@ -907,14 +907,14 @@ PrefabInstance:
     - target: {fileID: 608844261, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: occupiedField
       value: 
-      objectReference: {fileID: 106592338}
+      objectReference: {fileID: 1660630}
     - target: {fileID: 1233361812545480, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_Name
       value: White Stone King
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -922,7 +922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalRotation.x

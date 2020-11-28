@@ -133,20 +133,34 @@ public class PiecesController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("ComputerControllable");
+        Pawn[] pawns = FindObjectsOfType<Pawn>();
+
+        foreach (Pawn pawn in pawns)
+        {
+            DoComputerPieceMove(pawn);
+        }
+        if (pawns.Length > 0) yield return new WaitForSeconds(pawns[0].moveTime);
 
         foreach (GameObject go in gos)
         {
             Piece enemy = go.GetComponent<Piece>();
+            if (!(enemy is Pawn)) DoComputerPieceMove(enemy); ;
+            
+        }
+    }
 
-            Piece pieceToAttack = enemy.GetComputerPieceToAttack();
-            if (pieceToAttack != null)
-            {
-                enemy.Attack(pieceToAttack);
-            }
-            else
-            {
-                enemy.MoveTo(enemy.GetComputerFieldToMove());
-            }
+    //-----------------------------------------------------------------------------------------------------
+
+    private void DoComputerPieceMove(Piece enemy)
+    {
+        Piece pieceToAttack = enemy.GetComputerPieceToAttack();
+        if (pieceToAttack != null)
+        {
+            enemy.Attack(pieceToAttack);
+        }
+        else
+        {
+            enemy.MoveTo(enemy.GetComputerFieldToMove());
         }
     }
 }

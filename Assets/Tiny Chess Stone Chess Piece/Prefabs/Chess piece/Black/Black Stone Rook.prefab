@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: black
-  moveTime: 2
+  moveTime: 1
   occupiedField: {fileID: 0}
   moveDistance: 14.1
 --- !u!1 &1696893368774660
