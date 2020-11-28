@@ -44,7 +44,15 @@ public abstract class Piece : MonoBehaviour
             if (transform.position.Equals(targetPosition)) moving = false;
         }
     }
-
+    
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "ComputerControllable")
+        {
+            Die(collision.transform.position, 5);
+        }
+    }
+    
     public abstract List<Field> GetAvailableFields();
 
     public abstract Field GetComputerFieldToMove();
@@ -68,18 +76,18 @@ public abstract class Piece : MonoBehaviour
     {
         if(enemy != null && !IsDead)
         {
-            enemy.Die();
+            enemy.Die(transform.position, 10);
             MoveTo(enemy.occupiedField);
         }
     }
 
-    public virtual void Die()
+    public virtual void Die(Vector3 attackerPosition, float forceMultiplier)
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.useGravity = true;
-        rigidbody.isKinematic = false;
-        rigidbody.AddTorque(new Vector3(0, 0, forceDirection*20), ForceMode.Force);
-        rigidbody.AddForce(new Vector3(0,10, forceDirection*20), ForceMode.Impulse);
+        rigidbody.AddTorque(new Vector3(0, 0, forceDirection*forceMultiplier), ForceMode.Force);
+        Vector3 victimPosition = transform.position;
+        Vector3 forceVector = new Vector3((victimPosition.x-attackerPosition.x), 1, (victimPosition.z - attackerPosition.z));
+        rigidbody.AddForce(forceVector*forceMultiplier, ForceMode.Impulse);
         Destroy(this.gameObject, 5f);
         forceDirection *= -1;
         IsDead = true;
