@@ -14,9 +14,9 @@ public class Field : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!color.Equals("white") && !color.Equals("black"))
+        if(!color.Equals("white") && !color.Equals("black") && !color.Equals("golden"))
         {
-            throw new System.ArgumentException("color must be black or white", "color");
+            throw new System.ArgumentException("field color must be black, white or golden", "color");
         }
     }
 

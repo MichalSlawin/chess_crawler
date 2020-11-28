@@ -29,7 +29,7 @@ public abstract class Piece : MonoBehaviour
 
         if (!color.Equals("white") && !color.Equals("black"))
         {
-            throw new System.ArgumentException("color must be black or white", "color");
+            throw new System.ArgumentException("piece color must be black or white", "color");
         }
     }
 

@@ -122,6 +122,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &106592338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5978716854362027117, guid: c149d1e7427d4c743911b8598e1d5ea0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2007518323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3601fbde92346aa4182b3b7f4c5ad922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &157504632 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7877633045480032457, guid: be275e4bc8265564a8fc39c438a18c90,
@@ -195,6 +207,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0c5356476a49ba449f2789ccdbf2c24, type: 3}
+--- !u!1 &224687149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3787498455411916749, guid: 1d394ee1162eca64fb4a9cf03e61408e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3787498455758373396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &224687150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224687149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3601fbde92346aa4182b3b7f4c5ad922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: golden
 --- !u!1 &258500396
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.15974917, y: 0.68882525, z: -0.15974918, w: 0.68882525}
-  m_LocalPosition: {x: -4.6, y: 6.53, z: 7.52}
+  m_LocalPosition: {x: 22.93, y: 7.36, z: -8.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -876,14 +907,14 @@ PrefabInstance:
     - target: {fileID: 608844261, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: occupiedField
       value: 
-      objectReference: {fileID: 1677297123}
+      objectReference: {fileID: 106592338}
     - target: {fileID: 1233361812545480, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_Name
       value: White Stone King
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -891,7 +922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 4595559095916412, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -961,18 +992,6 @@ Transform:
   m_Father: {fileID: 1224704226}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1677297123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4633446230856349307, guid: be275e4bc8265564a8fc39c438a18c90,
-    type: 3}
-  m_PrefabInstance: {fileID: 3056528236136633292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3601fbde92346aa4182b3b7f4c5ad922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1850455121
 PrefabInstance:
   m_ObjectHideFlags: 0

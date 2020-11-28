@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PiecesController : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class PiecesController : MonoBehaviour
     void Update()
     {
         HandleSelection();
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -71,10 +77,24 @@ public class PiecesController : MonoBehaviour
         {
             HandlePieceSelection();
             selectedPiece.MoveTo(selectedField);
-            
-            StartCoroutine(DoComputerMove(selectedPiece.moveTime));
-            selectedPiece = null;
+            if (selectedField.color == "golden")
+            {
+                StartCoroutine(LoadLevelAfterDelay(SceneManager.GetActiveScene().name, selectedPiece.moveTime + 0.5f));
+            }
+            else
+            {
+                StartCoroutine(DoComputerMove(selectedPiece.moveTime));
+                selectedPiece = null;
+            }
         }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    IEnumerator LoadLevelAfterDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 
     //-----------------------------------------------------------------------------------------------------
