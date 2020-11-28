@@ -19,21 +19,21 @@ public class King : Piece
     public override List<Field> GetAvailableFields()
     {
         List<Field> availableFields = new List<Field>();
-        Field[] fields = Field.FindObjectsOfType<Field>(); ;
+        Field[] fields = Field.FindObjectsOfType<Field>();
         
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Field field in fields)
         {
             Vector3 diff = field.transform.position - startingPosition;
-            if(Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance)
+            if(Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && !field.Equals(occupiedField))
             {
                 availableFields.Add(field);
             }
         }
 
-        if(availableFields.Count > 9)
+        if(availableFields.Count > 8)
         {
-            throw new System.Exception("King cannot have more than 9 fields available");
+            throw new System.Exception("King cannot have more than 8 fields available");
         }
 
         return availableFields;
