@@ -12,7 +12,7 @@ public abstract class Piece : MonoBehaviour
     private float timeCounter;
     private Vector3 startPosition;
     private Vector3 targetPosition;
-    private bool moving = false;
+    protected bool moving = false;
     private bool isDead = false;
 
     private static int forceDirection = 1;
