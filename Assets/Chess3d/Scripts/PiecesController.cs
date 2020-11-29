@@ -65,7 +65,7 @@ public class PiecesController : MonoBehaviour
         if (selectedEnemy.occupiedField.Available)
         {
             HandlePieceSelection();
-            selectedPiece.Attack(selectedEnemy);
+            selectedPiece.Attack(selectedEnemy, 10);
 
             StartCoroutine(DoComputerMove(selectedPiece.moveTime));
             selectedPiece = null;
@@ -173,7 +173,7 @@ public class PiecesController : MonoBehaviour
         Piece pieceToAttack = enemy.GetComputerPieceToAttack();
         if (pieceToAttack != null)
         {
-            enemy.Attack(pieceToAttack);
+            enemy.Attack(pieceToAttack, 2);
         }
         else
         {

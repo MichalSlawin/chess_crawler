@@ -12,7 +12,7 @@ public abstract class Piece : MonoBehaviour
     private float timeCounter;
     private Vector3 startPosition;
     private Vector3 targetPosition;
-    protected bool moving = false;
+    private bool moving = false;
     private bool isDead = false;
 
     private static int forceDirection = 1;
@@ -72,11 +72,11 @@ public abstract class Piece : MonoBehaviour
         }
     }
 
-    public virtual void Attack(Piece enemy)
+    public virtual void Attack(Piece enemy, float forceMultiplier)
     {
         if(enemy != null && !IsDead)
         {
-            StartCoroutine(enemy.Die(transform.position, 10, moveTime-0.2f));
+            StartCoroutine(enemy.Die(transform.position, forceMultiplier, moveTime-0.2f));
             MoveTo(enemy.occupiedField);
         }
     }
