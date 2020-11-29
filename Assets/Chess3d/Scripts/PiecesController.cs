@@ -11,10 +11,15 @@ public class PiecesController : MonoBehaviour
     private Color32 selectColor = new Color32(107, 230, 46, 255);
     private Color32 originalColor = new Color32(255, 255, 255, 255);
 
+    private bool computerMoveFinished = true;
+
     // Update is called once per frame
     void Update()
     {
-        HandleSelection();
+        if(computerMoveFinished)
+        {
+            HandleSelection();
+        }
 
         if(Input.GetKeyDown(KeyCode.P))
         {
@@ -130,6 +135,7 @@ public class PiecesController : MonoBehaviour
 
     private IEnumerator DoComputerMove(float waitTime)
     {
+        computerMoveFinished = false;
         yield return new WaitForSeconds(waitTime);
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("ComputerControllable");
@@ -137,16 +143,27 @@ public class PiecesController : MonoBehaviour
 
         foreach (Pawn pawn in pawns)
         {
-            DoComputerPieceMove(pawn);
+            if(!pawn.IsDead)
+            {
+                DoComputerPieceMove(pawn);
+            }
         }
         if (pawns.Length > 0) yield return new WaitForSeconds(pawns[0].moveTime);
 
         foreach (GameObject go in gos)
         {
-            Piece enemy = go.GetComponent<Piece>();
-            if (!(enemy is Pawn)) DoComputerPieceMove(enemy); ;
-            
+            if(go != null)
+            {
+                Piece enemy = go.GetComponent<Piece>();
+                if (!(enemy is Pawn) && !enemy.IsDead)
+                {
+                    DoComputerPieceMove(enemy);
+                    yield return new WaitForSeconds(enemy.moveTime);
+                }
+                
+            }
         }
+        computerMoveFinished = true;
     }
 
     //-----------------------------------------------------------------------------------------------------

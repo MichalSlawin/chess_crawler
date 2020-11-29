@@ -49,7 +49,7 @@ public abstract class Piece : MonoBehaviour
     {
         if(collision.gameObject.tag == "ComputerControllable")
         {
-            Die(collision.transform.position, 5);
+            StartCoroutine(Die(collision.transform.position, 2, 0));
         }
     }
     
@@ -76,22 +76,24 @@ public abstract class Piece : MonoBehaviour
     {
         if(enemy != null && !IsDead)
         {
-            enemy.Die(transform.position, 10);
+            StartCoroutine(enemy.Die(transform.position, 10, moveTime-0.2f));
             MoveTo(enemy.occupiedField);
         }
     }
 
-    public virtual void Die(Vector3 attackerPosition, float forceMultiplier)
+    public virtual IEnumerator Die(Vector3 attackerPosition, float forceMultiplier, float delay)
     {
+        occupiedField.Occupied = false;
+        yield return new WaitForSeconds(delay);
+
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddTorque(new Vector3(0, 0, forceDirection*forceMultiplier), ForceMode.Force);
         Vector3 victimPosition = transform.position;
         Vector3 forceVector = new Vector3((victimPosition.x-attackerPosition.x), 1, (victimPosition.z - attackerPosition.z));
         rigidbody.AddForce(forceVector*forceMultiplier, ForceMode.Impulse);
-        Destroy(this.gameObject, 5f);
+        Destroy(this.gameObject, 10f);
         forceDirection *= -1;
         IsDead = true;
-        occupiedField.Occupied = false;
     }
 
     public abstract Piece GetComputerPieceToAttack();
