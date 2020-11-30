@@ -15,6 +15,7 @@ public abstract class Piece : MonoBehaviour
     private bool moving = false;
     private bool isDead = false;
 
+    private new Rigidbody rigidbody;
     private static int forceDirection = 1;
 
     private bool selected = false;
@@ -24,6 +25,8 @@ public abstract class Piece : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
+
         occupiedField.Occupied = true;
         startPosition = targetPosition = transform.position;
 
@@ -43,6 +46,19 @@ public abstract class Piece : MonoBehaviour
 
             if (transform.position.Equals(targetPosition)) moving = false;
         }
+        if(occupiedField == null || occupiedField.Destroyed == true)
+        {
+            HandleOccupiedFieldDestruction();
+        }
+        
+    }
+
+    private void HandleOccupiedFieldDestruction()
+    {
+        rigidbody.isKinematic = false;
+        rigidbody.useGravity = true;
+        IsDead = true;
+        Destroy(this.gameObject, 5f);
     }
     
     protected virtual void OnCollisionEnter(Collision collision)
@@ -59,7 +75,7 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void MoveTo(Field field)
     {
-        if(field != null && !field.Occupied && !IsDead)
+        if(field != null && !field.Occupied && !field.Destroyed && !IsDead)
         {
             occupiedField.Occupied = false;
             field.Occupied = true;
@@ -86,7 +102,6 @@ public abstract class Piece : MonoBehaviour
         occupiedField.Occupied = false;
         yield return new WaitForSeconds(delay);
 
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddTorque(new Vector3(0, 0, forceDirection*forceMultiplier), ForceMode.Force);
         Vector3 victimPosition = transform.position;
         Vector3 forceVector = new Vector3((victimPosition.x-attackerPosition.x), 1, (victimPosition.z - attackerPosition.z));

@@ -7,9 +7,11 @@ public class Field : MonoBehaviour
     public string color; // black or white
     private bool available = false;
     private bool occupied = false;
+    private bool destroyed = false;
 
     public bool Available { get => available; set => available = value; }
     public bool Occupied { get => occupied; set => occupied = value; }
+    public bool Destroyed { get => destroyed; set => destroyed = value; }
 
     // Start is called before the first frame update
     void Start()

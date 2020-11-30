@@ -12,6 +12,11 @@ public class PiecesController : MonoBehaviour
     private Color32 originalColor = new Color32(255, 255, 255, 255);
 
     private bool computerMoveFinished = true;
+    private int turnNumber = 1;
+    private float fieldSize = 2;
+
+    public float currentFieldsXToDestroy = 0;
+    public int turnsNumberToDestroy = 3;
 
     // Update is called once per frame
     void Update()
@@ -136,6 +141,7 @@ public class PiecesController : MonoBehaviour
     private IEnumerator DoComputerMove(float waitTime)
     {
         computerMoveFinished = false;
+        DestroyFields();
         yield return new WaitForSeconds(waitTime);
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("ComputerControllable");
@@ -163,6 +169,7 @@ public class PiecesController : MonoBehaviour
                 
             }
         }
+        turnNumber++;
         computerMoveFinished = true;
     }
 
@@ -178,6 +185,32 @@ public class PiecesController : MonoBehaviour
         else
         {
             enemy.MoveTo(enemy.GetComputerFieldToMove());
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void DestroyFields()
+    {
+        if(turnNumber % turnsNumberToDestroy == 0)
+        {
+            Field[] fields = Field.FindObjectsOfType<Field>();
+
+            foreach(Field field in fields)
+            {
+                if(field.transform.position.x == currentFieldsXToDestroy && field.color != "golden")
+                {
+                    Rigidbody rigidbody = field.GetComponent<Rigidbody>();
+                    if(rigidbody != null)
+                    {
+                        rigidbody.isKinematic = false;
+                        rigidbody.useGravity = true;
+                        field.Destroyed = true;
+                        Destroy(field.gameObject, 5f);
+                    }
+                }
+            }
+            currentFieldsXToDestroy += fieldSize;
         }
     }
 }
