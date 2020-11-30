@@ -22,7 +22,7 @@ public class Rook : Piece
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Field field in fields)
         {
-            if(IsFieldAvailable(field, startingPosition) && !field.Occupied)
+            if(IsFieldAvailable(field, startingPosition) && !field.Occupied && !field.Destroyed)
             {
                 availableFields.Add(field);
             }

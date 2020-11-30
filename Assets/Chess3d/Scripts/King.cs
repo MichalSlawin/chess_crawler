@@ -25,7 +25,7 @@ public class King : Piece
         foreach (Field field in fields)
         {
             Vector3 diff = field.transform.position - startingPosition;
-            if(Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && !field.Equals(occupiedField))
+            if(Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && !field.Equals(occupiedField) && !field.Destroyed)
             {
                 availableFields.Add(field);
             }

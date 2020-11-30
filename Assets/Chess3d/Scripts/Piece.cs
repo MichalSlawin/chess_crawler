@@ -8,6 +8,7 @@ public abstract class Piece : MonoBehaviour
     public float moveTime;
     public Field occupiedField;
     public float moveDistance = 2.1f;
+    public bool waitMode = false;
 
     private float timeCounter;
     private Vector3 startPosition;

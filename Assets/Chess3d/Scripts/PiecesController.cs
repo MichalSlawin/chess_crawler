@@ -30,6 +30,11 @@ public class PiecesController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -163,8 +168,10 @@ public class PiecesController : MonoBehaviour
                 Piece enemy = go.GetComponent<Piece>();
                 if (!(enemy is Pawn) && !enemy.IsDead)
                 {
-                    DoComputerPieceMove(enemy);
-                    yield return new WaitForSeconds(enemy.moveTime);
+                    if(DoComputerPieceMove(enemy))
+                    {
+                        yield return new WaitForSeconds(enemy.moveTime);
+                    }
                 }
                 
             }
@@ -175,17 +182,21 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
-    private void DoComputerPieceMove(Piece enemy)
+    // Returns true if any move is commited, false otherwise
+    private bool DoComputerPieceMove(Piece enemy)
     {
         Piece pieceToAttack = enemy.GetComputerPieceToAttack();
         if (pieceToAttack != null)
         {
             enemy.Attack(pieceToAttack, 2);
+            return true;
         }
-        else
+        else if(!enemy.waitMode)
         {
             enemy.MoveTo(enemy.GetComputerFieldToMove());
+            return true;
         }
+        return false;
     }
 
     //-----------------------------------------------------------------------------------------------------
