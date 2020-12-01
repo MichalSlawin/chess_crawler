@@ -8,15 +8,13 @@ public class PiecesController : MonoBehaviour
     private Piece selectedPiece = null;
     private GameObject selectedObject;
 
-    private Color32 selectColor = new Color32(107, 230, 46, 255);
-    private Color32 originalColor = new Color32(255, 255, 255, 255);
-
     private bool computerMoveFinished = true;
     private int turnNumber = 1;
     private float fieldSize = 2;
 
     public float currentFieldsXToDestroy = 0;
     public int turnsNumberToDestroy = 3;
+    public Pawn pawnPrefab;
 
     // Update is called once per frame
     void Update()
@@ -52,17 +50,38 @@ public class PiecesController : MonoBehaviour
                 if (selectedObject.CompareTag("PlayerControllable"))
                 {
                     selectedPiece = selectedObject.GetComponent<Piece>();
-                    HandlePieceSelection();
+                    if(!selectedPiece.waitMode)
+                    {
+                        HandlePieceSelection();
+                    }
                 }
-                else if (selectedObject.CompareTag("Field") && selectedPiece != null)
+                else if (selectedObject.CompareTag("Field") && selectedPiece != null && selectedPiece.Selected)
                 {
                     HandleFieldSelection();
+                }
+                else if (selectedObject.CompareTag("Field") && (selectedPiece == null || !selectedPiece.Selected))
+                {
+                    PlacePawnDummy();
                 }
                 else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece != null)
                 {
                     HandleEnemySelection();
                 }
             }
+        }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void PlacePawnDummy()
+    {
+        Field selectedField = selectedObject.GetComponent<Field>();
+        Vector3 position = selectedField.transform.position;
+
+        if (!selectedField.Occupied)
+        {
+            pawnPrefab.occupiedField = selectedField;
+            Instantiate(pawnPrefab, new Vector3(position.x, position.y+1, position.z), Quaternion.identity);
         }
     }
 
@@ -186,7 +205,7 @@ public class PiecesController : MonoBehaviour
     private bool DoComputerPieceMove(Piece enemy)
     {
         Piece pieceToAttack = enemy.GetComputerPieceToAttack();
-        if (pieceToAttack != null)
+        if (pieceToAttack != null && !pieceToAttack.IsDead)
         {
             enemy.Attack(pieceToAttack, 2);
             return true;
