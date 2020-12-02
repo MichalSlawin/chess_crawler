@@ -48,4 +48,9 @@ public class King : Piece
     {
         throw new System.NotImplementedException();
     }
+
+    public override bool IsFieldAvailable(Field field, Vector3 startingPosition)
+    {
+        throw new System.NotImplementedException();
+    }
 }

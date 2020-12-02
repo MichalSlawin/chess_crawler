@@ -9,6 +9,7 @@ public abstract class Piece : MonoBehaviour
     public Field occupiedField;
     public float moveDistance = 2.1f;
     public bool waitMode = false;
+    public bool attackAllMode = false;
 
     private float timeCounter;
     private Vector3 startPosition;
@@ -112,5 +113,28 @@ public abstract class Piece : MonoBehaviour
         IsDead = true;
     }
 
-    public abstract Piece GetComputerPieceToAttack();
+    public abstract bool IsFieldAvailable(Field field, Vector3 startingPosition);
+
+    public virtual Piece GetComputerPieceToAttack()
+    {
+        Piece[] pieces = Piece.FindObjectsOfType<Piece>();
+
+        Vector3 startingPosition = occupiedField.transform.position;
+        foreach (Piece piece in pieces)
+        {
+            if (!piece.Equals(this) && IsFieldAvailable(piece.occupiedField, startingPosition))
+            {
+                if (attackAllMode && piece.tag == "ComputerControllable")
+                {
+                    return piece;
+                }
+
+                if (piece.tag == "PlayerControllable")
+                {
+                    return piece;
+                }
+            }
+        }
+        return null;
+    }
 }

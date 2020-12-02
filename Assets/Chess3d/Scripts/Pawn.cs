@@ -60,15 +60,27 @@ public class Pawn : Piece
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Piece piece in pieces)
         {
-            if(piece.tag == "PlayerControllable")
+            Vector3 diff = piece.occupiedField.transform.position - startingPosition;
+
+            if (!piece.Equals(this) && Mathf.Abs(diff.x) >= 1 && Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && diff.z < 0)
             {
-                Vector3 diff = piece.occupiedField.transform.position - startingPosition;
-                if (Mathf.Abs(diff.x) >= 1 && Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && diff.z < 0)
+                if (attackAllMode && piece.tag == "ComputerControllable")
+                {
+                    return piece;
+                }
+
+                if (piece.tag == "PlayerControllable")
                 {
                     return piece;
                 }
             }
         }
         return null;
+    }
+
+    // pawns move and attack differently so this method is of no use
+    public override bool IsFieldAvailable(Field field, Vector3 startingPosition)
+    {
+        throw new System.NotImplementedException();
     }
 }

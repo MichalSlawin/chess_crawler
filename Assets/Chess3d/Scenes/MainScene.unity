@@ -346,6 +346,10 @@ PrefabInstance:
       propertyPath: occupiedField
       value: 
       objectReference: {fileID: 1576183954}
+    - target: {fileID: 825727826, guid: e0c5356476a49ba449f2789ccdbf2c24, type: 3}
+      propertyPath: attackAllMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1335334207052556, guid: e0c5356476a49ba449f2789ccdbf2c24, type: 3}
       propertyPath: m_Name
       value: Black Stone Pawn (3)
@@ -1187,6 +1191,10 @@ PrefabInstance:
     - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: waitMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
+      propertyPath: attackAllMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1562622190837322, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_Name

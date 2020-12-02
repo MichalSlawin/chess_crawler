@@ -31,7 +31,7 @@ public class Rook : Piece
         return availableFields;
     }
 
-    private bool IsFieldAvailable(Field field, Vector3 startingPosition)
+    public override bool IsFieldAvailable(Field field, Vector3 startingPosition)
     {
         Vector3 fieldPosition = field.transform.position;
         Vector3 diff = fieldPosition - startingPosition;
@@ -70,20 +70,5 @@ public class Rook : Piece
 
         if (fields.Count == 0) return null;
         return fields[index];
-    }
-
-    public override Piece GetComputerPieceToAttack()
-    {
-        Piece[] pieces = Piece.FindObjectsOfType<Piece>();
-
-        Vector3 startingPosition = occupiedField.transform.position;
-        foreach (Piece piece in pieces)
-        {
-            if (piece.tag == "PlayerControllable" && IsFieldAvailable(piece.occupiedField, startingPosition))
-            {
-                return piece;
-            }
-        }
-        return null;
     }
 }

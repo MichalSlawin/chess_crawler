@@ -187,10 +187,8 @@ public class PiecesController : MonoBehaviour
                 Piece enemy = go.GetComponent<Piece>();
                 if (!(enemy is Pawn) && !enemy.IsDead)
                 {
-                    if(DoComputerPieceMove(enemy))
-                    {
-                        yield return new WaitForSeconds(enemy.moveTime);
-                    }
+                    float afterMoveDelay = DoComputerPieceMove(enemy);
+                    yield return new WaitForSeconds(afterMoveDelay);
                 }
                 
             }
@@ -201,21 +199,21 @@ public class PiecesController : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------
 
-    // Returns true if any move is commited, false otherwise
-    private bool DoComputerPieceMove(Piece enemy)
+    // Returns how much time should game wait after move
+    private float DoComputerPieceMove(Piece enemy)
     {
         Piece pieceToAttack = enemy.GetComputerPieceToAttack();
         if (pieceToAttack != null && !pieceToAttack.IsDead)
         {
             enemy.Attack(pieceToAttack, 2);
-            return true;
+            return enemy.moveTime + 0.5f;
         }
         else if(!enemy.waitMode)
         {
             enemy.MoveTo(enemy.GetComputerFieldToMove());
-            return true;
+            return enemy.moveTime;
         }
-        return false;
+        return 0;
     }
 
     //-----------------------------------------------------------------------------------------------------
