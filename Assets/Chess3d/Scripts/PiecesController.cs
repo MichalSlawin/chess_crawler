@@ -14,6 +14,8 @@ public class PiecesController : MonoBehaviour
 
     public float currentFieldsXToDestroy = 0;
     public int turnsNumberToDestroy = 3;
+    public int dummiesToplace = 1;
+    public int enemiesToEnrage = 1;
     public Pawn pawnPrefab;
 
     // Update is called once per frame
@@ -61,14 +63,36 @@ public class PiecesController : MonoBehaviour
                 }
                 else if (selectedObject.CompareTag("Field") && (selectedPiece == null || !selectedPiece.Selected))
                 {
-                    PlacePawnDummy();
+                    if(dummiesToplace > 0)
+                    {
+                        PlacePawnDummy();
+                        dummiesToplace--;
+                    }
                 }
                 else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece != null)
                 {
                     HandleEnemySelection();
                 }
+                else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece == null)
+                {
+                    if(enemiesToEnrage > 0)
+                    {
+                        EnrageEnemy();
+                        enemiesToEnrage--;
+                    }
+                    
+                }
             }
         }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void EnrageEnemy()
+    {
+        Piece selectedEnemy = selectedObject.GetComponent<Piece>();
+        selectedEnemy.attackAllMode = true;
+        selectedObject.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
     //-----------------------------------------------------------------------------------------------------
