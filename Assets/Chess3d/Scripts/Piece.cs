@@ -70,10 +70,33 @@ public abstract class Piece : MonoBehaviour
             StartCoroutine(Die(collision.transform.position, 2, 0));
         }
     }
-    
-    public abstract List<Field> GetAvailableFields();
 
-    public abstract Field GetComputerFieldToMove();
+    public virtual List<Field> GetAvailableFields()
+    {
+        List<Field> availableFields = new List<Field>();
+        Field[] fields = Field.FindObjectsOfType<Field>();
+
+        Vector3 startingPosition = occupiedField.transform.position;
+        foreach (Field field in fields)
+        {
+            if (IsFieldAvailable(field, startingPosition) && !field.Occupied && !field.Destroyed && !field.Equals(occupiedField))
+            {
+                availableFields.Add(field);
+            }
+        }
+
+        return availableFields;
+    }
+
+    public virtual Field GetComputerFieldToMove()
+    {
+        List<Field> fields = GetAvailableFields();
+
+        int index = Random.Range(0, fields.Count);
+
+        if (fields.Count == 0) return null;
+        return fields[index];
+    }
 
     public virtual void MoveTo(Field field)
     {

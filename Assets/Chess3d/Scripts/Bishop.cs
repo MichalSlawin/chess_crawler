@@ -34,31 +34,4 @@ public class Bishop : Piece
         }
         return false;
     }
-
-    public override List<Field> GetAvailableFields()
-    {
-        List<Field> availableFields = new List<Field>();
-        Field[] fields = Field.FindObjectsOfType<Field>();
-
-        Vector3 startingPosition = occupiedField.transform.position;
-        foreach (Field field in fields)
-        {
-            if (IsFieldAvailable(field, startingPosition) && !field.Occupied && !field.Destroyed)
-            {
-                availableFields.Add(field);
-            }
-        }
-
-        return availableFields;
-    }
-
-    public override Field GetComputerFieldToMove()
-    {
-        List<Field> fields = GetAvailableFields();
-
-        int index = Random.Range(0, fields.Count);
-
-        if (fields.Count == 0) return null;
-        return fields[index];
-    }
 }

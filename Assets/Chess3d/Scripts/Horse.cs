@@ -4,28 +4,6 @@ using UnityEngine;
 
 public class Horse : Piece
 {
-    public override List<Field> GetAvailableFields()
-    {
-        List<Field> availableFields = new List<Field>();
-        Field[] fields = Field.FindObjectsOfType<Field>();
-
-        Vector3 startingPosition = occupiedField.transform.position;
-        foreach (Field field in fields)
-        {
-            if (IsFieldAvailable(field, startingPosition) && !field.Destroyed)
-            {
-                availableFields.Add(field);
-            }
-        }
-
-        if (availableFields.Count > 8)
-        {
-            throw new System.Exception("Horse cannot have more than 8 fields available");
-        }
-
-        return availableFields;
-    }
-
     public override bool IsFieldAvailable(Field field, Vector3 startingPosition)
     {
         Vector3 diff = field.transform.position - startingPosition;
@@ -36,15 +14,5 @@ public class Horse : Piece
             return true;
         }
         return false;
-    }
-
-    public override Field GetComputerFieldToMove()
-    {
-        List<Field> fields = GetAvailableFields();
-
-        int index = Random.Range(0, fields.Count);
-
-        if (fields.Count == 0) return null;
-        return fields[index];
     }
 }

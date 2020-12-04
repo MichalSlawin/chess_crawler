@@ -14,7 +14,7 @@ public class PiecesController : MonoBehaviour
 
     public float currentFieldsXToDestroy = 0;
     public int turnsNumberToDestroy = 3;
-    public int dummiesToplace = 1;
+    public int dummiesToPlace = 1;
     public int enemiesToEnrage = 1;
     public Pawn pawnPrefab;
 
@@ -52,6 +52,7 @@ public class PiecesController : MonoBehaviour
                 if (selectedObject.CompareTag("PlayerControllable"))
                 {
                     selectedPiece = selectedObject.GetComponent<Piece>();
+                    
                     if(!selectedPiece.waitMode)
                     {
                         HandlePieceSelection();
@@ -63,22 +64,20 @@ public class PiecesController : MonoBehaviour
                 }
                 else if (selectedObject.CompareTag("Field") && (selectedPiece == null || !selectedPiece.Selected))
                 {
-                    if(dummiesToplace > 0)
+                    if(dummiesToPlace > 0)
                     {
                         PlacePawnDummy();
-                        dummiesToplace--;
                     }
                 }
-                else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece != null)
+                else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece != null && selectedPiece.Selected)
                 {
                     HandleEnemySelection();
                 }
-                else if (selectedObject.CompareTag("ComputerControllable") && selectedPiece == null)
+                else if (selectedObject.CompareTag("ComputerControllable") && (selectedPiece == null || !selectedPiece.Selected))
                 {
                     if(enemiesToEnrage > 0)
                     {
                         EnrageEnemy();
-                        enemiesToEnrage--;
                     }
                     
                 }
@@ -93,6 +92,7 @@ public class PiecesController : MonoBehaviour
         Piece selectedEnemy = selectedObject.GetComponent<Piece>();
         selectedEnemy.attackAllMode = true;
         selectedObject.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
+        enemiesToEnrage--;
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -106,6 +106,7 @@ public class PiecesController : MonoBehaviour
         {
             pawnPrefab.occupiedField = selectedField;
             Instantiate(pawnPrefab, new Vector3(position.x, position.y+1, position.z), Quaternion.identity);
+            dummiesToPlace--;
         }
     }
 

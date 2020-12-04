@@ -16,16 +16,25 @@ public class King : Piece
         base.Update();
     }
 
+    public override bool IsFieldAvailable(Field field, Vector3 startingPosition)
+    {
+        Vector3 diff = field.transform.position - startingPosition;
+        if (Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public override List<Field> GetAvailableFields()
     {
         List<Field> availableFields = new List<Field>();
         Field[] fields = Field.FindObjectsOfType<Field>();
-        
+
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Field field in fields)
         {
-            Vector3 diff = field.transform.position - startingPosition;
-            if(Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && !field.Equals(occupiedField) && !field.Destroyed)
+            if (IsFieldAvailable(field, startingPosition) && !field.Destroyed && !field.Equals(occupiedField))
             {
                 availableFields.Add(field);
             }
@@ -37,20 +46,5 @@ public class King : Piece
         }
 
         return availableFields;
-    }
-
-    public override Field GetComputerFieldToMove()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override Piece GetComputerPieceToAttack()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override bool IsFieldAvailable(Field field, Vector3 startingPosition)
-    {
-        throw new System.NotImplementedException();
     }
 }
