@@ -242,7 +242,10 @@ MonoBehaviour:
   color: black
   moveTime: 0.5
   occupiedField: {fileID: 0}
+  goToField: {fileID: 0}
   moveDistance: 2.1
+  waitMode: 0
+  attackAllMode: 0
 --- !u!1 &1572437516991594
 GameObject:
   m_ObjectHideFlags: 0

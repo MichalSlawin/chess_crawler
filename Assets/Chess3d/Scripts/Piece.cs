@@ -7,6 +7,7 @@ public abstract class Piece : MonoBehaviour
     public string color; // black or white
     public float moveTime;
     public Field occupiedField;
+    public Field goToField = null;
     public float moveDistance = 2.1f;
     public bool waitMode = false;
     public bool attackAllMode = false;
@@ -90,6 +91,15 @@ public abstract class Piece : MonoBehaviour
 
     public virtual Field GetComputerFieldToMove()
     {
+        if(goToField != null)
+        {
+            if(IsFieldAvailable(goToField, occupiedField.transform.position))
+            {
+                return goToField;
+            }
+            return null;
+        }
+
         List<Field> fields = GetAvailableFields();
 
         int index = Random.Range(0, fields.Count);
@@ -104,6 +114,12 @@ public abstract class Piece : MonoBehaviour
         {
             occupiedField.Occupied = false;
             field.Occupied = true;
+
+            if (goToField != null)
+            {
+                goToField = occupiedField;
+            }
+
             occupiedField = field;
 
             targetPosition = new Vector3(field.transform.position.x, transform.position.y, field.transform.position.z);
@@ -131,9 +147,9 @@ public abstract class Piece : MonoBehaviour
         Vector3 victimPosition = transform.position;
         Vector3 forceVector = new Vector3((victimPosition.x-attackerPosition.x), 1, (victimPosition.z - attackerPosition.z));
         rigidbody.AddForce(forceVector*forceMultiplier, ForceMode.Impulse);
-        Destroy(this.gameObject, 10f);
         forceDirection *= -1;
         IsDead = true;
+        Destroy(this.gameObject, 10f);
     }
 
     public abstract bool IsFieldAvailable(Field field, Vector3 startingPosition);
@@ -145,7 +161,7 @@ public abstract class Piece : MonoBehaviour
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Piece piece in pieces)
         {
-            if (!piece.Equals(this) && IsFieldAvailable(piece.occupiedField, startingPosition))
+            if (!piece.Equals(this) && IsFieldAvailable(piece.occupiedField, startingPosition) && !piece.isDead)
             {
                 if (attackAllMode && piece.tag == "ComputerControllable")
                 {

@@ -483,6 +483,7 @@ MonoBehaviour:
   color: black
   moveTime: 1
   occupiedField: {fileID: 0}
+  goToField: {fileID: 0}
   moveDistance: 14.1
   waitMode: 0
   attackAllMode: 0

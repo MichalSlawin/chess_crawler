@@ -30,7 +30,10 @@ public class Rook : Piece
                     }
                 }
             }
-            if (!blocked) return true;
+            if (!blocked)
+            {
+                return true;
+            }
         }
         return false;
     }
