@@ -19,22 +19,35 @@ public class Queen : Piece
                 {
                     Vector3 piecePosition = piece.occupiedField.transform.position;
                     Vector3 pieceDiff = piecePosition - startingPosition;
-                    if ((Mathf.Abs(diff.x) <= 0.1 && Mathf.Abs(pieceDiff.x) <= 0.1) || (Mathf.Abs(diff.z) <= 0.1 && Mathf.Abs(pieceDiff.z) <= 0.1)
-                        || Mathf.Abs(Mathf.RoundToInt(pieceDiff.x)) == Mathf.Abs(Mathf.RoundToInt(pieceDiff.z)))
+                    // rook part
+                    if ((Mathf.Abs(diff.x) <= 0.1 && Mathf.Abs(pieceDiff.x) <= 0.1) || (Mathf.Abs(diff.z) <= 0.1 && Mathf.Abs(pieceDiff.z) <= 0.1))
                     {
                         if ((piecePosition.x < startingPosition.x && piecePosition.x > fieldPosition.x) || (piecePosition.x > startingPosition.x && piecePosition.x < fieldPosition.x)
                             || (piecePosition.z < startingPosition.z && piecePosition.z > fieldPosition.z) || (piecePosition.z > startingPosition.z && piecePosition.z < fieldPosition.z))
                         {
+                            
                             blocked = true;
                             break;
                         }
 
                     }
+                    // bishop part
+                    if (Mathf.Abs(Mathf.RoundToInt(pieceDiff.x)) == Mathf.Abs(Mathf.RoundToInt(pieceDiff.z)))
+                    {
+                        // this if wall is a nightmare but I don't see other way
+                        if ((piecePosition.x < startingPosition.x && piecePosition.x > fieldPosition.x && piecePosition.z < startingPosition.z && piecePosition.z > fieldPosition.z)
+                            || (piecePosition.x > startingPosition.x && piecePosition.x < fieldPosition.x && piecePosition.z < startingPosition.z && piecePosition.z > fieldPosition.z)
+                            || (piecePosition.x < startingPosition.x && piecePosition.x > fieldPosition.x && piecePosition.z > startingPosition.z && piecePosition.z < fieldPosition.z)
+                            || (piecePosition.x > startingPosition.x && piecePosition.x < fieldPosition.x && piecePosition.z > startingPosition.z && piecePosition.z < fieldPosition.z))
+                        {
+                            blocked = true;
+                            break;
+                        }
+                    }
                 }
             }
             if (!blocked)
             {
-                Debug.Log(field);
                 return true;
             }
         }

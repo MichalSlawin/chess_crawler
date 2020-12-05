@@ -228,6 +228,7 @@ public class PiecesController : MonoBehaviour
     private float DoComputerPieceMove(Piece enemy)
     {
         Piece pieceToAttack = enemy.GetComputerPieceToAttack();
+        //Debug.Log(pieceToAttack);
         if (pieceToAttack != null && !pieceToAttack.IsDead)
         {
             enemy.Attack(pieceToAttack, 2);
