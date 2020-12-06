@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 3787498455411916744}
   - component: {fileID: 3787498455411916751}
   - component: {fileID: 3787498455411916750}
+  - component: {fileID: 7988167091290357707}
   m_Layer: 0
   m_Name: GoldenField
   m_TagString: Field
@@ -175,3 +176,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7988167091290357707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3787498455411916749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3601fbde92346aa4182b3b7f4c5ad922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: golden

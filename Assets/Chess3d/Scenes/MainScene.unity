@@ -828,10 +828,6 @@ PrefabInstance:
       propertyPath: occupiedField
       value: 
       objectReference: {fileID: 677884447}
-    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
-      propertyPath: waitMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse
@@ -1256,14 +1252,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1461201684}
     - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
-      propertyPath: waitMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
-      propertyPath: attackAllMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: goToField
       value: 
       objectReference: {fileID: 1821636520}
@@ -1384,10 +1372,6 @@ PrefabInstance:
       propertyPath: occupiedField
       value: 
       objectReference: {fileID: 27471514}
-    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
-      propertyPath: waitMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1562622190837322, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_Name
       value: Black Stone Rook

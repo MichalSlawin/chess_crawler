@@ -196,14 +196,16 @@ public class PiecesController : MonoBehaviour
         GameObject[] gos = GameObject.FindGameObjectsWithTag("ComputerControllable");
         Pawn[] pawns = FindObjectsOfType<Pawn>();
 
+        bool allPawnsWaiting = true;
         foreach (Pawn pawn in pawns)
         {
             if (!pawn.IsDead && pawn.CompareTag("ComputerControllable"))
             {
                 DoComputerPieceMove(pawn);
+                if (!pawn.waitMode) allPawnsWaiting = false;
             }
         }
-        if (pawns.Length > 0) yield return new WaitForSeconds(pawns[0].moveTime);
+        if (pawns.Length > 0 && !allPawnsWaiting) yield return new WaitForSeconds(pawns[0].moveTime);
 
         foreach (GameObject go in gos)
         {
