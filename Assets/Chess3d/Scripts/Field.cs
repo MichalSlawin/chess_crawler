@@ -22,9 +22,15 @@ public class Field : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DestroyField()
     {
-        
+        Rigidbody rigidbody = this.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            rigidbody.isKinematic = false;
+            rigidbody.useGravity = true;
+            this.Destroyed = true;
+            Destroy(this.gameObject, 5f);
+        }
     }
 }

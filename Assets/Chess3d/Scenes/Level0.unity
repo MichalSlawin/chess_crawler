@@ -1336,6 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFieldsXToDestroy: 0
+  currentFieldsZToDestroy: -1
   turnsNumberToDestroy: 3
   dummiesToPlace: 0
   enemiesToEnrage: 0

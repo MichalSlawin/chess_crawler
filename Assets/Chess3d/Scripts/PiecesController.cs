@@ -12,7 +12,8 @@ public class PiecesController : MonoBehaviour
     private int turnNumber = 1;
     private float fieldSize = 2;
 
-    public float currentFieldsXToDestroy = 0;
+    public float currentFieldsXToDestroy = -1;
+    public float currentFieldsZToDestroy = -1;
     public int turnsNumberToDestroy = 3;
     public int dummiesToPlace = 1;
     public int enemiesToEnrage = 1;
@@ -253,19 +254,21 @@ public class PiecesController : MonoBehaviour
 
             foreach(Field field in fields)
             {
-                if(field.transform.position.x == currentFieldsXToDestroy && field.color != "golden")
+                if(field.color != "golden")
                 {
-                    Rigidbody rigidbody = field.GetComponent<Rigidbody>();
-                    if(rigidbody != null)
+                    if (currentFieldsXToDestroy != -1 && field.transform.position.x == currentFieldsXToDestroy)
                     {
-                        rigidbody.isKinematic = false;
-                        rigidbody.useGravity = true;
-                        field.Destroyed = true;
-                        Destroy(field.gameObject, 5f);
+                        field.DestroyField();
+                    }
+                    if (currentFieldsZToDestroy != -1 && field.transform.position.z== currentFieldsZToDestroy)
+                    {
+                        field.DestroyField();
                     }
                 }
+                
             }
-            currentFieldsXToDestroy += fieldSize;
+            if (currentFieldsXToDestroy != -1) currentFieldsXToDestroy += fieldSize;
+            if (currentFieldsZToDestroy != -1) currentFieldsZToDestroy += fieldSize;
         }
     }
 }
