@@ -161,12 +161,12 @@ public class PiecesController : MonoBehaviour
 
     private void HandlePieceSelection()
     {
-        if (selectedPiece.Selected) // deselect piece
+        if (selectedPiece.Selected && !selectedPiece.IsDead) // deselect piece
         {
             selectedPiece.Selected = false;
             ChangeFieldsAvailability(false);
         }
-        else // select piece
+        else if (!selectedPiece.IsDead) // select piece
         {
             selectedPiece.Selected = true;
             ChangeFieldsAvailability(true);
@@ -260,7 +260,7 @@ public class PiecesController : MonoBehaviour
                     {
                         field.DestroyField();
                     }
-                    if (currentFieldsZToDestroy != -1 && field.transform.position.z== currentFieldsZToDestroy)
+                    if (currentFieldsZToDestroy != -1 && field.transform.position.z == currentFieldsZToDestroy)
                     {
                         field.DestroyField();
                     }
