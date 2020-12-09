@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Chess3d/Scenes/Level0.unity
+    guid: 125f4468df3de704cb59ac4bdec7c3f8
+  - enabled: 1
+    path: Assets/Chess3d/Scenes/Level1.unity
+    guid: 97e893bcd47a42c4c906f4bff3e428d7
+  - enabled: 1
+    path: Assets/Chess3d/Scenes/Level2.unity
+    guid: 485e49220b3780241bd9520ddd2a98bc
+  - enabled: 1
+    path: Assets/Chess3d/Scenes/Level3.unity
+    guid: e4a84cb1884f53f45b372d80023108d5
   m_configObjects: {}

@@ -18,6 +18,7 @@ public class PiecesController : MonoBehaviour
     public int dummiesToPlace = 1;
     public int enemiesToEnrage = 1;
     public Pawn pawnPrefab;
+    public string nextLevelName = "";
 
     // Update is called once per frame
     void Update()
@@ -139,7 +140,9 @@ public class PiecesController : MonoBehaviour
             selectedPiece.MoveTo(selectedField);
             if (selectedField.color == "golden")
             {
-                StartCoroutine(LoadLevelAfterDelay(SceneManager.GetActiveScene().name, selectedPiece.moveTime + 0.5f));
+                string nextScene = nextLevelName;
+                if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
+                StartCoroutine(LoadLevelAfterDelay(nextScene, selectedPiece.moveTime + 0.5f));
             }
             else
             {
