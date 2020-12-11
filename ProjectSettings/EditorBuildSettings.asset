@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Chess3d/Scenes/Level3.unity
     guid: e4a84cb1884f53f45b372d80023108d5
+  - enabled: 1
+    path: Assets/Chess3d/Scenes/Level4.unity
+    guid: e1d9d2d8c39321a44a57e6c34a15a795
   m_configObjects: {}
