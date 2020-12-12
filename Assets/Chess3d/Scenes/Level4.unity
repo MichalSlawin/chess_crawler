@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: waitMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1562622190837322, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_Name
       value: Black Stone Rook (1)
@@ -1180,6 +1184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  scrollSpeed: 40
   mouseSensitivityX: 4
   mouseSensitivityY: 4
 --- !u!4 &1038889474 stripped
@@ -1685,6 +1690,10 @@ PrefabInstance:
       propertyPath: waitMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1562622190837322, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_Name
       value: Black Stone Rook
@@ -1763,6 +1772,10 @@ PrefabInstance:
     - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: waitMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 573087643, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1562622190837322, guid: 62c53adad025f164292e09c4a5790a77, type: 3}
       propertyPath: m_Name
@@ -2177,7 +2190,7 @@ MonoBehaviour:
   enemiesToEnrage: 0
   pawnPrefab: {fileID: 138821529860699151, guid: cab5f13ae783c0e47bebde00fd0357a5,
     type: 3}
-  nextLevelName: 
+  nextLevelName: Level5
 --- !u!1 &1980238209
 GameObject:
   m_ObjectHideFlags: 0

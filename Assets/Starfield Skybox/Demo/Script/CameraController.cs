@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    public float movementSpeed = 10f;
+    public float movementSpeed = 20f;
+    public float scrollSpeed = 40;
 
     public float mouseSensitivityX = 4.0f;
     public float mouseSensitivityY = 4.0f;
@@ -25,6 +26,15 @@ public class CameraController : MonoBehaviour
     {
         HandleRotation();
         HandleMovement();
+        HandleMouseScroll();
+    }
+
+    private void HandleMouseScroll()
+    {
+        if(Input.mouseScrollDelta.y != 0)
+        {
+            transform.Translate(0f, 0f, Input.mouseScrollDelta.y * scrollSpeed * Time.deltaTime);
+        }
     }
 
     private void HandleRotation()

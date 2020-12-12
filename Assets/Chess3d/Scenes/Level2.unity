@@ -487,6 +487,10 @@ PrefabInstance:
       propertyPath: goToField
       value: 
       objectReference: {fileID: 734999026}
+    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse (1)
@@ -505,19 +509,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -529,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -556,6 +560,10 @@ PrefabInstance:
       propertyPath: goToField
       value: 
       objectReference: {fileID: 1359771237}
+    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse (5)
@@ -574,19 +582,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -598,7 +606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -795,19 +803,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -819,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -852,6 +860,10 @@ PrefabInstance:
       propertyPath: goToField
       value: 
       objectReference: {fileID: 228720347}
+    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse
@@ -870,19 +882,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -894,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -990,6 +1002,10 @@ PrefabInstance:
       propertyPath: goToField
       value: 
       objectReference: {fileID: 1398876836}
+    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse (2)
@@ -1008,19 +1024,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -1032,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1298,6 +1314,10 @@ PrefabInstance:
       propertyPath: goToField
       value: 
       objectReference: {fileID: 64732893}
+    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse (4)
@@ -1316,19 +1336,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -1340,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1457,6 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  scrollSpeed: 40
   mouseSensitivityX: 4
   mouseSensitivityY: 4
 --- !u!4 &1015253380 stripped
@@ -1697,6 +1718,10 @@ PrefabInstance:
       propertyPath: goToField
       value: 
       objectReference: {fileID: 1165609788}
+    - target: {fileID: 1019984771, guid: 4957843483d9e93419739a06271621fe, type: 3}
+      propertyPath: twoFieldsMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564033256009494, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_Name
       value: Black Stone Horse (3)
@@ -1715,19 +1740,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -1739,7 +1764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1808,19 +1833,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_RootOrder
@@ -1832,7 +1857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

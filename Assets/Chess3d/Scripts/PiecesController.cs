@@ -123,7 +123,7 @@ public class PiecesController : MonoBehaviour
             HandlePieceSelection();
             selectedPiece.Attack(selectedEnemy, 10);
 
-            StartCoroutine(DoComputerMove(selectedPiece.moveTime));
+            StartCoroutine(DoComputerMove(selectedPiece.moveTime + 1f));
             selectedPiece = null;
         }
     }

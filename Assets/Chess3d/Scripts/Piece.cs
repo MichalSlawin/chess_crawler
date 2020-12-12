@@ -11,6 +11,7 @@ public abstract class Piece : MonoBehaviour
     public float moveDistance = 2.1f;
     public bool waitMode = false;
     public bool attackAllMode = false;
+    public bool twoFieldsMode = false;
 
     private float timeCounter;
     private Vector3 startPosition;
@@ -97,6 +98,11 @@ public abstract class Piece : MonoBehaviour
             {
                 return goToField;
             }
+            return null;
+        }
+
+        if(goToField == null && twoFieldsMode)
+        {
             return null;
         }
 
