@@ -2294,6 +2294,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
+--- !u!114 &1901245193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 608844261, guid: 279db6381e10dfa4ea1b4074d833bfb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1901245192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b775ccdd0ca23a4b9ea4b65c629a913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1942001505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7201064453170126584, guid: 0e7b5739993a58b409a5e3c0bf7e1b95,
@@ -2352,6 +2364,7 @@ MonoBehaviour:
   enemiesToEnrage: 0
   pawnPrefab: {fileID: 138821529860699151, guid: cab5f13ae783c0e47bebde00fd0357a5,
     type: 3}
+  whiteKing: {fileID: 1901245193}
   nextLevelName: Level3
 --- !u!1 &1980238209
 GameObject:

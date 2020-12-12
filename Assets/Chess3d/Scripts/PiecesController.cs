@@ -18,9 +18,15 @@ public class PiecesController : MonoBehaviour
     public int dummiesToPlace = 1;
     public int enemiesToEnrage = 1;
     public Pawn pawnPrefab;
+    public King whiteKing;
     public string nextLevelName = "";
 
-    // Update is called once per frame
+    void Start()
+    {
+        selectedPiece = whiteKing;
+        HandlePieceSelection();
+    }
+
     void Update()
     {
         if(computerMoveFinished)
@@ -226,6 +232,15 @@ public class PiecesController : MonoBehaviour
         }
         turnNumber++;
         computerMoveFinished = true;
+        SelectPiece(whiteKing);
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void SelectPiece(Piece piece)
+    {
+        selectedPiece = piece;
+        HandlePieceSelection();
     }
 
     //-----------------------------------------------------------------------------------------------------

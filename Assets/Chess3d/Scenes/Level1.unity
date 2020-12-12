@@ -974,6 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  scrollSpeed: 40
   mouseSensitivityX: 4
   mouseSensitivityY: 4
 --- !u!1001 &1002580950
@@ -1771,6 +1772,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 279db6381e10dfa4ea1b4074d833bfb8, type: 3}
+--- !u!114 &1901245193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 608844261, guid: 279db6381e10dfa4ea1b4074d833bfb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1901245192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b775ccdd0ca23a4b9ea4b65c629a913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1902581112 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 119466106533434911, guid: 862d76313babd0a499773ea931aa7567,
@@ -1835,6 +1848,7 @@ MonoBehaviour:
   enemiesToEnrage: 0
   pawnPrefab: {fileID: 138821529860699151, guid: cab5f13ae783c0e47bebde00fd0357a5,
     type: 3}
+  whiteKing: {fileID: 1901245193}
   nextLevelName: Level2
 --- !u!1 &1980238209
 GameObject:
