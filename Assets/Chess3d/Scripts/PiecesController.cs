@@ -59,12 +59,14 @@ public class PiecesController : MonoBehaviour
                 selectedObject = hit.transform.gameObject;
                 if (selectedObject.CompareTag("PlayerControllable"))
                 {
+                    /*
                     selectedPiece = selectedObject.GetComponent<Piece>();
                     
                     if(!selectedPiece.waitMode)
                     {
                         HandlePieceSelection();
                     }
+                    */
                 }
                 else if (selectedObject.CompareTag("Field") && selectedPiece != null && selectedPiece.Selected)
                 {
