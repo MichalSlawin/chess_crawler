@@ -39,9 +39,9 @@ public class PiecesController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu")
         {
-            Application.Quit();
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

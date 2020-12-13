@@ -1805,7 +1805,7 @@ MonoBehaviour:
   pawnPrefab: {fileID: 138821529860699151, guid: cab5f13ae783c0e47bebde00fd0357a5,
     type: 3}
   whiteKing: {fileID: 1149277480}
-  nextLevelName: 
+  nextLevelName: MainMenu
 --- !u!1 &1980238209
 GameObject:
   m_ObjectHideFlags: 0
