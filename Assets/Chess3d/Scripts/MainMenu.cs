@@ -26,9 +26,9 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void PlayGame()
+    public void PlayGame(string levelName)
     {
-        SceneManager.LoadScene("Level0");
+        SceneManager.LoadScene(levelName);
     }
 
     public void QuitGame()
