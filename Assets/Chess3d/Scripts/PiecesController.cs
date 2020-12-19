@@ -20,6 +20,7 @@ public class PiecesController : MonoBehaviour
     public Pawn pawnPrefab;
     public King whiteKing;
     public string nextLevelName = "";
+    public int nextLevelNum;
 
     void Start()
     {
@@ -148,9 +149,7 @@ public class PiecesController : MonoBehaviour
             selectedPiece.MoveTo(selectedField);
             if (selectedField.color == "golden")
             {
-                string nextScene = nextLevelName;
-                if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
-                StartCoroutine(LoadLevelAfterDelay(nextScene, selectedPiece.moveTime + 0.5f));
+                FinishLevel();
             }
             else
             {
@@ -158,6 +157,19 @@ public class PiecesController : MonoBehaviour
                 selectedPiece = null;
             }
         }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void FinishLevel()
+    {
+        string nextScene = nextLevelName;
+        if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
+
+        FileHandler.GameData.UnlockedLevelNum = nextLevelNum;
+        FileHandler.SaveFile();
+
+        StartCoroutine(LoadLevelAfterDelay(nextScene, selectedPiece.moveTime + 0.5f));
     }
 
     //-----------------------------------------------------------------------------------------------------

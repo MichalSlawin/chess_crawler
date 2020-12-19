@@ -973,10 +973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d94a4a03572ac45a8b49ca7d5b4a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  scrollSpeed: 40
-  mouseSensitivityX: 4
-  mouseSensitivityY: 4
 --- !u!1001 &1002580950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1850,6 +1846,7 @@ MonoBehaviour:
     type: 3}
   whiteKing: {fileID: 1901245193}
   nextLevelName: Level2
+  nextLevelNum: 2
 --- !u!1 &1980238209
 GameObject:
   m_ObjectHideFlags: 0

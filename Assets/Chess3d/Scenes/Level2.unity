@@ -1476,10 +1476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d94a4a03572ac45a8b49ca7d5b4a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  scrollSpeed: 40
-  mouseSensitivityX: 4
-  mouseSensitivityY: 4
 --- !u!4 &1015253380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7739433862865110677, guid: 178f16150c1aeba4cadb4a6daab07af1,
@@ -2366,6 +2362,7 @@ MonoBehaviour:
     type: 3}
   whiteKing: {fileID: 1901245193}
   nextLevelName: Level3
+  nextLevelNum: 3
 --- !u!1 &1980238209
 GameObject:
   m_ObjectHideFlags: 0

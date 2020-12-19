@@ -27,6 +27,20 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void InitLevelsAvailability()
+    {
+        GameObject levels = GameObject.FindGameObjectWithTag("Levels");
+        LevelButton[] levelButtons = levels.GetComponentsInChildren<LevelButton>();
+
+        foreach (LevelButton button in levelButtons)
+        {
+            if(button.levelNumber > FileHandler.GameData.UnlockedLevelNum)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+    }
+
     private void InitCameraSlider()
     {
         GameObject slider = GameObject.Find("CameraSlider");
@@ -55,8 +69,7 @@ public class MainMenu : MonoBehaviour
         CameraController.ScrollSpeed = 1 + (value * CameraController.SCROLL_SPEED_MAX);
         CameraController.MovementSpeed = 1 + (value * CameraController.MOVEMENT_SPEED_MAX);
 
-        GameData gameData = new GameData();
-        gameData.CameraSpeed = value;
-        FileHandler.SaveFile(gameData);
+        FileHandler.GameData.CameraSpeed = value;
+        FileHandler.SaveFile();
     }
 }

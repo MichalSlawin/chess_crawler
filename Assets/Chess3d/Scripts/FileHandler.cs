@@ -7,8 +7,11 @@ using UnityEngine;
 public static class FileHandler
 {
     private const string filename = "/gameData.dat";
+    private static GameData gameData = new GameData();
 
-    public static void SaveFile(GameData gameData)
+    public static GameData GameData { get => gameData; set => gameData = value; }
+
+    public static void SaveFile()
     {
         string destination = Application.persistentDataPath + filename;
         FileStream file;
@@ -33,7 +36,7 @@ public static class FileHandler
         }
 
         BinaryFormatter bf = new BinaryFormatter();
-        GameData gameData = (GameData)bf.Deserialize(file);
+        gameData = (GameData)bf.Deserialize(file);
         file.Close();
 
         return gameData;
