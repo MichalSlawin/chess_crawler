@@ -8,9 +8,23 @@ public class MainMenu : MonoBehaviour
 {
     private static Slider cameraSlider;
 
+    void Start()
+    {
+        GetFileData();
+    }
+
     public void InitOptions()
     {
         InitCameraSlider();
+    }
+
+    private void GetFileData()
+    {
+        GameData gameData = FileHandler.LoadFile();
+        if(gameData != null)
+        {
+            ChangeCameraSpeed(gameData.CameraSpeed);
+        }
     }
 
     private void InitCameraSlider()
@@ -40,5 +54,9 @@ public class MainMenu : MonoBehaviour
     {
         CameraController.ScrollSpeed = 1 + (value * CameraController.SCROLL_SPEED_MAX);
         CameraController.MovementSpeed = 1 + (value * CameraController.MOVEMENT_SPEED_MAX);
+
+        GameData gameData = new GameData();
+        gameData.CameraSpeed = value;
+        FileHandler.SaveFile(gameData);
     }
 }

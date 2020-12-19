@@ -34,7 +34,6 @@ public class Queen : Piece
                     // bishop part
                     if (Mathf.Abs(Mathf.RoundToInt(pieceDiff.x)) == Mathf.Abs(Mathf.RoundToInt(pieceDiff.z)))
                     {
-                        // this if wall is a nightmare but I don't see other way
                         if ((piecePosition.x < startingPosition.x && piecePosition.x > fieldPosition.x && piecePosition.z < startingPosition.z && piecePosition.z > fieldPosition.z)
                             || (piecePosition.x > startingPosition.x && piecePosition.x < fieldPosition.x && piecePosition.z < startingPosition.z && piecePosition.z > fieldPosition.z)
                             || (piecePosition.x < startingPosition.x && piecePosition.x > fieldPosition.x && piecePosition.z > startingPosition.z && piecePosition.z < fieldPosition.z)
