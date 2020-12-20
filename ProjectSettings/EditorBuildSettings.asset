@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Chess3d/Scenes/Level5.unity
     guid: 9db87a4fa7bb1364fba60ad71d349b58
+  - enabled: 1
+    path: Assets/Chess3d/Scenes/FinishedGame.unity
+    guid: a7f53efbda7c7ec44816c49a18c79c29
   m_configObjects: {}

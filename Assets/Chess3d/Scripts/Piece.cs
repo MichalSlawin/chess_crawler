@@ -64,6 +64,11 @@ public abstract class Piece : MonoBehaviour
         rigidbody.useGravity = true;
         IsDead = true;
         Destroy(this.gameObject, 5f);
+
+        if (gameObject.CompareTag("PlayerControllable"))
+        {
+            GameObject.Find("LoseText").GetComponent<TextMeshProUGUI>().enabled = true;
+        }
     }
     
     protected virtual void OnCollisionEnter(Collision collision)
@@ -160,8 +165,7 @@ public abstract class Piece : MonoBehaviour
 
         if(gameObject.CompareTag("PlayerControllable"))
         {
-            GameObject loseText = GameObject.Find("LoseText");
-            loseText.GetComponent<TextMeshProUGUI>().enabled = true;
+            GameObject.Find("LoseText").GetComponent<TextMeshProUGUI>().enabled = true;
         }
     }
 
