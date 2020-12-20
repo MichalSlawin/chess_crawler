@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Piece : MonoBehaviour
 {
@@ -155,7 +156,13 @@ public abstract class Piece : MonoBehaviour
         rigidbody.AddForce(forceVector*forceMultiplier, ForceMode.Impulse);
         forceDirection *= -1;
         IsDead = true;
-        Destroy(this.gameObject, 10f);
+        Destroy(gameObject, 10f);
+
+        if(gameObject.CompareTag("PlayerControllable"))
+        {
+            GameObject loseText = GameObject.Find("LoseText");
+            loseText.GetComponent<TextMeshProUGUI>().enabled = true;
+        }
     }
 
     public abstract bool IsFieldAvailable(Field field, Vector3 startingPosition);
