@@ -9,6 +9,7 @@ TagManager:
   - Field
   - LevelButton
   - Levels
+  - Music
   layers:
   - Default
   - TransparentFX

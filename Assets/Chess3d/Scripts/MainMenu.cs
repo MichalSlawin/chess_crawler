@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     private static Slider cameraSlider;
+    private static Slider musicSlider;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public void InitOptions()
     {
         InitCameraSlider();
+        InitMusicSlider();
     }
 
     private void GetFileData()
@@ -24,6 +26,7 @@ public class MainMenu : MonoBehaviour
         if(gameData != null)
         {
             ChangeCameraSpeed(gameData.CameraSpeed);
+            ChangeMusicVolume(gameData.MusicVolume);
         }
     }
 
@@ -54,8 +57,23 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    private void InitMusicSlider()
+    {
+        GameObject slider = GameObject.Find("MusicSlider");
+        if(slider != null)
+        {
+            musicSlider = slider.GetComponent<Slider>();
+            if(musicSlider != null)
+            {
+                musicSlider.normalizedValue = AudioController.Volume;
+            }
+        }
+    }
+
     public void PlayGame(string levelName)
     {
+        GameObject audio = GameObject.FindGameObjectWithTag("Music");
+        Destroy(audio);
         SceneManager.LoadScene(levelName);
     }
 
@@ -70,6 +88,14 @@ public class MainMenu : MonoBehaviour
         CameraController.MovementSpeed = 1 + (value * CameraController.MOVEMENT_SPEED_MAX);
 
         FileHandler.GameData.CameraSpeed = value;
+        FileHandler.SaveFile();
+    }
+
+    public void ChangeMusicVolume(float value)
+    {
+        AudioController.Volume = value;
+
+        FileHandler.GameData.MusicVolume = value;
         FileHandler.SaveFile();
     }
 }

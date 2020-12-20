@@ -37,13 +37,21 @@ public class PiecesController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            RestartScene();
         }
 
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu")
         {
+            Destroy(GameObject.FindGameObjectWithTag("Music"));
             SceneManager.LoadScene("MainMenu");
         }
+    }
+
+    //-----------------------------------------------------------------------------------------------------
+
+    private void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -177,6 +185,7 @@ public class PiecesController : MonoBehaviour
     IEnumerator LoadLevelAfterDelay(string sceneName, float delay)
     {
         yield return new WaitForSeconds(delay);
+        Destroy(GameObject.FindGameObjectWithTag("Music"));
         SceneManager.LoadScene(sceneName);
     }
 
