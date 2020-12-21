@@ -18,13 +18,13 @@ public class PiecesController : MonoBehaviour
     public int dummiesToPlace = 1;
     public int enemiesToEnrage = 1;
     public Pawn pawnPrefab;
-    public King whiteKing;
+    public Piece whitePiece;
     public string nextLevelName = "";
     public int nextLevelNum;
 
     void Start()
     {
-        selectedPiece = whiteKing;
+        selectedPiece = whitePiece;
         HandlePieceSelection();
     }
 
@@ -134,7 +134,6 @@ public class PiecesController : MonoBehaviour
     private void HandleEnemySelection()
     {
         Piece selectedEnemy = selectedObject.GetComponent<Piece>();
-
         if (selectedEnemy.occupiedField.Available)
         {
             HandlePieceSelection();
@@ -210,7 +209,7 @@ public class PiecesController : MonoBehaviour
     private void ChangeFieldsAvailability(bool available)
     {
         List<Field> fields = selectedPiece.GetAvailableFields();
-
+        
         foreach (Field field in fields)
         {
             field.Available = available;
@@ -255,7 +254,7 @@ public class PiecesController : MonoBehaviour
         }
         turnNumber++;
         computerMoveFinished = true;
-        SelectPiece(whiteKing);
+        SelectPiece(whitePiece);
     }
 
     //-----------------------------------------------------------------------------------------------------

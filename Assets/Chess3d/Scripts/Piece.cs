@@ -87,9 +87,12 @@ public abstract class Piece : MonoBehaviour
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Field field in fields)
         {
-            if (IsFieldAvailable(field, startingPosition) && !field.Occupied && !field.Destroyed && !field.Equals(occupiedField))
+            if (IsFieldAvailable(field, startingPosition) && !field.Destroyed && !field.Equals(occupiedField))
             {
-                availableFields.Add(field);
+                if(!field.Occupied || this.color == "white")
+                {
+                    availableFields.Add(field);
+                }
             }
         }
 

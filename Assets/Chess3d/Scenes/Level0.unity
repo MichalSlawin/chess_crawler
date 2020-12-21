@@ -1544,7 +1544,7 @@ MonoBehaviour:
   enemiesToEnrage: 0
   pawnPrefab: {fileID: 138821529860699151, guid: cab5f13ae783c0e47bebde00fd0357a5,
     type: 3}
-  whiteKing: {fileID: 1658409125}
+  whitePiece: {fileID: 1658409125}
   nextLevelName: Level1
   nextLevelNum: 1
 --- !u!1 &1980238209
