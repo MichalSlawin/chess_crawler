@@ -11,8 +11,6 @@ public class CameraController : MonoBehaviour
     private static float mouseSensitivityX = 4.0f;
     private static float mouseSensitivityY = 4.0f;
 
-    private float rotY = 0.0f;
-
     private Vector3 cameraStartPosition;
 
     public static float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
@@ -49,10 +47,9 @@ public class CameraController : MonoBehaviour
         // rotation        
         if (Input.GetMouseButton(1))
         {
-            float rotX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * MouseSensitivityX;
-            rotY += Input.GetAxis("Mouse Y") * MouseSensitivityY;
-            rotY = Mathf.Clamp(rotY, -89.5f, 89.5f);
-            transform.localEulerAngles = new Vector3(-rotY, rotX, 0.0f);
+            float y = Input.GetAxis("Mouse X") * MouseSensitivityX;
+            float x = Input.GetAxis("Mouse Y") * MouseSensitivityY;
+            transform.eulerAngles = transform.eulerAngles - new Vector3(x, y * -1, 0);
         }
     }
 
