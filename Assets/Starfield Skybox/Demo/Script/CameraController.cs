@@ -12,6 +12,10 @@ public class CameraController : MonoBehaviour
     private static float mouseSensitivityY = 4.0f;
 
     private Vector3 cameraStartPosition;
+    private GameObject whitePieceObj; // player controllable
+    private Vector3 initialOffset; // beetween camera and white piece
+    private bool lockedMode = false;
+    private float smoothness = 1f;
 
     public static float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public static float ScrollSpeed { get => scrollSpeed; set => scrollSpeed = value; }
@@ -20,6 +24,9 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        whitePieceObj = GameObject.FindGameObjectWithTag("PlayerControllable");
+        initialOffset = transform.position - whitePieceObj.transform.position;
+
         if (GetComponent<Rigidbody>())
         {
             GetComponent<Rigidbody>().freezeRotation = true;
@@ -32,6 +39,15 @@ public class CameraController : MonoBehaviour
         HandleRotation();
         HandleMovement();
         HandleMouseScroll();
+    }
+
+    void FixedUpdate()
+    {
+        if(whitePieceObj != null && lockedMode)
+        {
+            Vector3 targetPos = whitePieceObj.transform.position + initialOffset;
+            transform.position = Vector3.Lerp(transform.position, targetPos, smoothness * Time.fixedDeltaTime);
+        }
     }
 
     private void HandleMouseScroll()
@@ -59,7 +75,7 @@ public class CameraController : MonoBehaviour
         float zAxisValue = Input.GetAxis("Vertical");
 
         // Camera position reset
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             gameObject.transform.localPosition = cameraStartPosition;
         }
@@ -77,6 +93,13 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             transform.position += -transform.up * MovementSpeed * Time.deltaTime;
+        }
+
+        // Locking camera
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            initialOffset = transform.position - whitePieceObj.transform.position;
+            lockedMode = !lockedMode;
         }
     }
 }
