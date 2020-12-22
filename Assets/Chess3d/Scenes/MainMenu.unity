@@ -4338,7 +4338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 221}
   m_SizeDelta: {x: 329.4414, y: -20.994019}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354189062
@@ -4804,10 +4804,11 @@ MonoBehaviour:
   m_text: '- Move the white king to the golden field to finish each level.
 
     -
-    Use left mouse button to click on a field (move) or on an enemy (attack).
+    Use Left Mouse Button to click on a field (move) or on an enemy (attack).
 
     -
-    Camera controlls: right mouse button (hold), scroll wheel, WSAD and QE.'
+    Camera controlls: hold Right Mouse Button to rotate. Press Space to switch between
+    free and locked mode. In free mode move with WSAD and QE or Mouse Scroll'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4871,7 +4872,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -132.61102, y: 0, z: -136.71252, w: -173.62479}
+  m_margin: {x: -132.61102, y: -31.34439, z: -136.71252, w: -173.62479}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

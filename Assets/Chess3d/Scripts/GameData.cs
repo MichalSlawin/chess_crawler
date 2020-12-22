@@ -10,6 +10,14 @@ public class GameData
     private int unlockedLevelNum = 0;
 
     public float CameraSpeed { get => cameraSpeed; set => cameraSpeed = value; }
-    public int UnlockedLevelNum { get => unlockedLevelNum; set => unlockedLevelNum = value; }
+    public int UnlockedLevelNum
+    {
+        get => unlockedLevelNum;
+        set
+        {
+            if(value > unlockedLevelNum)
+                unlockedLevelNum = value;
+        }
+    }
     public float MusicVolume { get => musicVolume; set => musicVolume = value; }
 }

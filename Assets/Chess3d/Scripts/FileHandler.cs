@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-// TODO: dont save level when its lesser than currently unlocked
+
 public static class FileHandler
 {
     private const string filename = "/gameData.dat";

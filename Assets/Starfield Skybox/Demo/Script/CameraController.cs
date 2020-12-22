@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private Vector3 cameraStartPosition;
     private GameObject whitePieceObj; // player controllable
     private Vector3 initialOffset; // beetween camera and white piece
-    private bool lockedMode = false;
+    private bool lockedMode = true;
     private float smoothness = 1f;
 
     public static float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
