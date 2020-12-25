@@ -11,6 +11,7 @@ public class PiecesController : MonoBehaviour
     private bool computerMoveFinished = true;
     private int turnNumber = 1;
     private float fieldSize = 2;
+    private int currentLevelNum;
 
     public float currentFieldsXToDestroy = -1;
     public float currentFieldsZToDestroy = -1;
@@ -21,9 +22,11 @@ public class PiecesController : MonoBehaviour
     public Piece whitePiece;
     public string nextLevelName = "";
     public int nextLevelNum;
+    public int movesForStarNumber;
 
     void Start()
     {
+        currentLevelNum = nextLevelNum - 1;
         selectedPiece = whitePiece;
         HandlePieceSelection();
     }
@@ -174,8 +177,13 @@ public class PiecesController : MonoBehaviour
         if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
 
         FileHandler.GameData.UnlockedLevelNum = nextLevelNum;
-        FileHandler.SaveFile();
 
+        if(turnNumber <= movesForStarNumber)
+        {
+            FileHandler.GameData.AddLevelWithStar(currentLevelNum);
+        }
+
+        FileHandler.SaveFile();
         StartCoroutine(LoadLevelAfterDelay(nextScene, selectedPiece.moveTime + 0.5f));
     }
 

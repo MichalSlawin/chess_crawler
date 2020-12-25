@@ -177,10 +177,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You finished the game.
+  m_text: 'You finished the game. Thank you for playing!
 
 
-    Press ESC to go to main menu.
+    Press ESC to go to
+    main menu.
 
 '
   m_isRightToLeft: 0

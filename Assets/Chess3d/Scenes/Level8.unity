@@ -2652,6 +2652,7 @@ MonoBehaviour:
   whitePiece: {fileID: 3339108220175432139}
   nextLevelName: FinishedGame
   nextLevelNum: 9
+  movesForStarNumber: 18
 --- !u!1 &1980238209
 GameObject:
   m_ObjectHideFlags: 0

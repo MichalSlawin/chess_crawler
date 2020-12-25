@@ -25,8 +25,12 @@ public class MainMenu : MonoBehaviour
         GameData gameData = FileHandler.LoadFile();
         if(gameData != null)
         {
-            ChangeCameraSpeed(gameData.CameraSpeed);
-            ChangeMusicVolume(gameData.MusicVolume);
+            if(FileHandler.GameData.GetLevelsWithStar() == null)
+            {
+                FileHandler.GameData.InitLevelsWithStar();
+            }
+            ChangeCameraSpeed(FileHandler.GameData.CameraSpeed);
+            ChangeMusicVolume(FileHandler.GameData.MusicVolume);
         }
     }
 
@@ -40,6 +44,12 @@ public class MainMenu : MonoBehaviour
             if(button.levelNumber > FileHandler.GameData.UnlockedLevelNum)
             {
                 button.gameObject.SetActive(false);
+            }
+            else if(!FileHandler.GameData.GetLevelsWithStar().Contains(button.levelNumber))
+            {
+                button.StarEarned = false;
+                Transform star = button.gameObject.transform.Find("Star");
+                star.gameObject.SetActive(false);
             }
         }
     }

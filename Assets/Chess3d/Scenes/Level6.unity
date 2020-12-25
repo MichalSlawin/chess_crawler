@@ -2455,6 +2455,7 @@ MonoBehaviour:
   whitePiece: {fileID: 818346574}
   nextLevelName: Level7
   nextLevelNum: 7
+  movesForStarNumber: 16
 --- !u!4 &1969963263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4505852727375384, guid: 4957843483d9e93419739a06271621fe,
