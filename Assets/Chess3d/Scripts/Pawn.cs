@@ -57,21 +57,26 @@ public class Pawn : Piece
     {
         Piece[] pieces = Piece.FindObjectsOfType<Piece>();
 
+        if (occupiedField == null || occupiedField.Destroyed) return null;
+
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Piece piece in pieces)
         {
-            Vector3 diff = piece.occupiedField.transform.position - startingPosition;
-
-            if (!piece.Equals(this) && Mathf.Abs(diff.x) >= 1 && Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && diff.z < 0)
+            if(piece.occupiedField != null && !piece.occupiedField.Destroyed)
             {
-                if (attackAllMode && piece.tag == "ComputerControllable")
-                {
-                    return piece;
-                }
+                Vector3 diff = piece.occupiedField.transform.position - startingPosition;
 
-                if (piece.tag == "PlayerControllable")
+                if (!piece.Equals(this) && Mathf.Abs(diff.x) >= 1 && Mathf.Abs(diff.x) <= moveDistance && Mathf.Abs(diff.z) <= moveDistance && diff.z < 0)
                 {
-                    return piece;
+                    if (attackAllMode && piece.tag == "ComputerControllable")
+                    {
+                        return piece;
+                    }
+
+                    if (piece.tag == "PlayerControllable")
+                    {
+                        return piece;
+                    }
                 }
             }
         }

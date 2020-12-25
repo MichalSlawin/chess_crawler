@@ -178,10 +178,12 @@ public abstract class Piece : MonoBehaviour
     {
         Piece[] pieces = Piece.FindObjectsOfType<Piece>();
 
+        if (occupiedField == null || occupiedField.Destroyed) return null;
+
         Vector3 startingPosition = occupiedField.transform.position;
         foreach (Piece piece in pieces)
         {
-            if (!piece.Equals(this) && IsFieldAvailable(piece.occupiedField, startingPosition) && !piece.isDead)
+            if (piece.occupiedField != null && !piece.occupiedField.Destroyed && !piece.Equals(this) && IsFieldAvailable(piece.occupiedField, startingPosition) && !piece.isDead)
             {
                 if (attackAllMode && piece.tag == "ComputerControllable")
                 {
