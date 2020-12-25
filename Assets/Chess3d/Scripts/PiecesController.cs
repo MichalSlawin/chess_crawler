@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PiecesController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PiecesController : MonoBehaviour
     private int turnNumber = 1;
     private float fieldSize = 2;
     private int currentLevelNum;
+    private bool levelFinished = false;
 
     public float currentFieldsXToDestroy = -1;
     public float currentFieldsZToDestroy = -1;
@@ -48,6 +50,13 @@ public class PiecesController : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("Music"));
             SceneManager.LoadScene("MainMenu");
         }
+
+        if(levelFinished && Input.GetKeyDown(KeyCode.Return))
+        {
+            string nextScene = nextLevelName;
+            if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
+            StartCoroutine(LoadLevelAfterDelay(nextScene, 0));
+        }
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -69,18 +78,7 @@ public class PiecesController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100))
             {
                 selectedObject = hit.transform.gameObject;
-                if (selectedObject.CompareTag("PlayerControllable"))
-                {
-                    /*
-                    selectedPiece = selectedObject.GetComponent<Piece>();
-                    
-                    if(!selectedPiece.waitMode)
-                    {
-                        HandlePieceSelection();
-                    }
-                    */
-                }
-                else if (selectedObject.CompareTag("Field") && selectedPiece != null && selectedPiece.Selected)
+                if (selectedObject.CompareTag("Field") && selectedPiece != null && selectedPiece.Selected)
                 {
                     HandleFieldSelection();
                 }
@@ -173,18 +171,20 @@ public class PiecesController : MonoBehaviour
 
     private void FinishLevel()
     {
-        string nextScene = nextLevelName;
-        if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
+        levelFinished = true;
+        GameObject winText = GameObject.Find("WinText");
+        winText.GetComponent<TextMeshProUGUI>().enabled = true;
 
         FileHandler.GameData.UnlockedLevelNum = nextLevelNum;
 
-        if(turnNumber <= movesForStarNumber)
+        if (turnNumber <= movesForStarNumber)
         {
             FileHandler.GameData.AddLevelWithStar(currentLevelNum);
+            Transform star = winText.gameObject.transform.Find("Star");
+            star.gameObject.SetActive(true);
         }
 
         FileHandler.SaveFile();
-        StartCoroutine(LoadLevelAfterDelay(nextScene, selectedPiece.moveTime + 0.5f));
     }
 
     //-----------------------------------------------------------------------------------------------------
