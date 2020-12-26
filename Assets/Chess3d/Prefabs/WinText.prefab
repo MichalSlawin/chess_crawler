@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Level passed\n\nPress P to try again\nEnter to proceed \nor ESC to return
+  m_text: "Level passed\n\nPress Enter to proceed  \nP to try again\nor ESC to return
     to menu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
