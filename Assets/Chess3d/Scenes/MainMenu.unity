@@ -786,10 +786,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game author: Micha\u0142 S\u0142awi\u0144ski\n\n- Steamworks.NET by Riley
-    Labrecque\n- Tiny Chess - Stone Chess Piece by ThreeBox\r\n- Starfield Skybox
-    by PULSAR BYTES\r\n- Absolutely Free Music by Vertex Studio\r\n- Simple UI Elements
-    by MadFireOn"
+  m_text: "Game author: Micha\u0142 S\u0142awi\u0144ski\n\nUsed Unity assets:\n-
+    Tiny Chess - Stone Chess Piece by ThreeBox\r\n- Starfield Skybox by PULSAR BYTES\r\n-
+    Absolutely Free Music by Vertex Studio\r\n- Simple UI Elements by MadFireOn"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
