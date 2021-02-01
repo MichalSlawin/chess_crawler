@@ -13,7 +13,7 @@ public class PiecesController : MonoBehaviour
     private int turnNumber = 1;
     private float fieldSize = 2;
     private int currentLevelNum;
-    private bool levelFinished = false;
+    //private bool levelFinished = false;
 
     public float currentFieldsXToDestroy = -1;
     public float currentFieldsZToDestroy = -1;
@@ -40,6 +40,7 @@ public class PiecesController : MonoBehaviour
             HandleSelection();
         }
 
+        /*
         if(Input.GetKeyDown(KeyCode.P))
         {
             RestartScene();
@@ -47,23 +48,34 @@ public class PiecesController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu")
         {
-            Destroy(GameObject.FindGameObjectWithTag("Music"));
-            SceneManager.LoadScene("MainMenu");
+            GoToMainMenu();
         }
 
         if(levelFinished && Input.GetKeyDown(KeyCode.Return))
         {
-            string nextScene = nextLevelName;
-            if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
-            StartCoroutine(LoadLevelAfterDelay(nextScene, 0));
+            LoadNextLevel();
         }
+        */
     }
 
     //-----------------------------------------------------------------------------------------------------
 
-    private void RestartScene()
+    public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMainMenu()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Music"));
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoadNextLevel()
+    {
+        string nextScene = nextLevelName;
+        if (nextScene == "") nextScene = SceneManager.GetActiveScene().name;
+        StartCoroutine(LoadLevelAfterDelay(nextScene, 0));
     }
 
     //-----------------------------------------------------------------------------------------------------
@@ -171,7 +183,7 @@ public class PiecesController : MonoBehaviour
 
     private void FinishLevel()
     {
-        levelFinished = true;
+        //levelFinished = true;
         GameObject winText = GameObject.Find("WinText");
         winText.GetComponent<TextMeshProUGUI>().enabled = true;
 
@@ -183,6 +195,9 @@ public class PiecesController : MonoBehaviour
             Transform star = winText.gameObject.transform.Find("Star");
             star.gameObject.SetActive(true);
         }
+
+        Transform nextLevelButton = winText.gameObject.transform.Find("NextLevelButton");
+        nextLevelButton.gameObject.SetActive(true);
 
         FileHandler.SaveFile();
     }

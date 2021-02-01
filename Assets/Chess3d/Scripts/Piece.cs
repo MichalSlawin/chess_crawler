@@ -67,7 +67,7 @@ public abstract class Piece : MonoBehaviour
 
         if (gameObject.CompareTag("PlayerControllable"))
         {
-            GameObject.Find("LoseText").GetComponent<TextMeshProUGUI>().enabled = true;
+            ShowLoseMsg();
         }
     }
     
@@ -168,8 +168,16 @@ public abstract class Piece : MonoBehaviour
 
         if(gameObject.CompareTag("PlayerControllable"))
         {
-            GameObject.Find("LoseText").GetComponent<TextMeshProUGUI>().enabled = true;
+            ShowLoseMsg();
         }
+    }
+
+    private void ShowLoseMsg()
+    {
+        GameObject loseText = GameObject.Find("LoseText");
+        loseText.GetComponent<TextMeshProUGUI>().enabled = true;
+        Transform replayButton = loseText.gameObject.transform.Find("ReplayButton");
+        replayButton.gameObject.SetActive(true);
     }
 
     public abstract bool IsFieldAvailable(Field field, Vector3 startingPosition);

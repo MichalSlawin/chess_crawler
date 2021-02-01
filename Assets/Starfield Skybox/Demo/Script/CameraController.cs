@@ -36,9 +36,9 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        HandleRotation();
-        HandleMovement();
-        HandleMouseScroll();
+        //HandleRotation();
+        //HandleMovement();
+        //HandleMouseScroll();
     }
 
     void FixedUpdate()
