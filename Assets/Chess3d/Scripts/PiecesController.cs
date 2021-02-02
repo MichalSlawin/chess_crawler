@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class PiecesController : MonoBehaviour
 {
@@ -192,12 +193,15 @@ public class PiecesController : MonoBehaviour
         if (turnNumber <= movesForStarNumber)
         {
             FileHandler.GameData.AddLevelWithStar(currentLevelNum);
-            Transform star = winText.gameObject.transform.Find("Star");
-            star.gameObject.SetActive(true);
+            GameObject star = GameObject.Find("Star");
+            star.GetComponent<Image>().enabled = true;
         }
 
-        Transform nextLevelButton = winText.gameObject.transform.Find("NextLevelButton");
-        nextLevelButton.gameObject.SetActive(true);
+        GameObject nextLevelButton = GameObject.Find("NextLevelButton"); 
+        nextLevelButton.GetComponent<Image>().enabled = true;
+        nextLevelButton.GetComponent<Button>().enabled = true;
+        GameObject nextLevelText = GameObject.Find("NextLevelText");
+        nextLevelText.GetComponent<TextMeshProUGUI>().enabled = true;
 
         FileHandler.SaveFile();
     }

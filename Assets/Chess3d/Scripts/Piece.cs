@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public abstract class Piece : MonoBehaviour
 {
@@ -176,8 +177,12 @@ public abstract class Piece : MonoBehaviour
     {
         GameObject loseText = GameObject.Find("LoseText");
         loseText.GetComponent<TextMeshProUGUI>().enabled = true;
-        Transform replayButton = loseText.gameObject.transform.Find("ReplayButton");
-        replayButton.gameObject.SetActive(true);
+
+        GameObject loseReplayButton = GameObject.Find("LoseReplayButton");
+        loseReplayButton.GetComponent<Image>().enabled = true;
+        loseReplayButton.GetComponent<Button>().enabled = true;
+        GameObject loseReplayText = GameObject.Find("LoseReplayText");
+        loseReplayText.GetComponent<TextMeshProUGUI>().enabled = true;
     }
 
     public abstract bool IsFieldAvailable(Field field, Vector3 startingPosition);
