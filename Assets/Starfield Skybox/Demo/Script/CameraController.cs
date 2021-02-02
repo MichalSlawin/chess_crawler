@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
+    public bool changeX = false;
+
     public const float MOVEMENT_SPEED_MAX = 200f;
     public const float SCROLL_SPEED_MAX = 1000f;
 
@@ -14,8 +16,10 @@ public class CameraController : MonoBehaviour
     private Vector3 cameraStartPosition;
     private GameObject whitePieceObj; // player controllable
     private Vector3 initialOffset; // beetween camera and white piece
+    private Vector3 initialOffsetOriginal;
     private bool lockedMode = true;
     private float smoothness = 1f;
+    private bool cameraChanged = false;
 
     public static float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public static float ScrollSpeed { get => scrollSpeed; set => scrollSpeed = value; }
@@ -26,7 +30,8 @@ public class CameraController : MonoBehaviour
     {
         whitePieceObj = GameObject.FindGameObjectWithTag("PlayerControllable");
         initialOffset = transform.position - whitePieceObj.transform.position;
-
+        initialOffsetOriginal = initialOffset;
+        
         if (GetComponent<Rigidbody>())
         {
             GetComponent<Rigidbody>().freezeRotation = true;
@@ -48,6 +53,37 @@ public class CameraController : MonoBehaviour
             Vector3 targetPos = whitePieceObj.transform.position + initialOffset;
             transform.position = Vector3.Lerp(transform.position, targetPos, smoothness * Time.fixedDeltaTime);
         }
+    }
+
+    public void ChangeCameraPosition()
+    {
+        if(changeX)
+        {
+            if (whitePieceObj.transform.position.x < transform.position.x)
+            {
+                transform.position = new Vector3(transform.position.x - 2 * Mathf.Abs(initialOffsetOriginal.x), transform.position.y, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x + 2 * Mathf.Abs(initialOffsetOriginal.x), transform.position.y, transform.position.z);
+            }
+        }
+        else
+        {
+            if (whitePieceObj.transform.position.z < transform.position.z)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2 * Mathf.Abs(initialOffsetOriginal.z));
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2 * Mathf.Abs(initialOffsetOriginal.z));
+            }
+        }
+        
+        transform.Rotate(0, 180, 0, Space.World);
+
+        initialOffset = transform.position - whitePieceObj.transform.position;
+        cameraChanged = !cameraChanged;
     }
 
     private void HandleMouseScroll()

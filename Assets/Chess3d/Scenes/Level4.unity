@@ -1771,6 +1771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d94a4a03572ac45a8b49ca7d5b4a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeX: 1
 --- !u!4 &1038889474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 30957175115852209, guid: 1e9297bbab723e642980f03dbf623e0d,
