@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     private bool lockedMode = true;
     private float smoothness = 1f;
     private bool cameraChanged = false;
+    private int changeMultiplier = 3;
 
     public static float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public static float ScrollSpeed { get => scrollSpeed; set => scrollSpeed = value; }
@@ -61,22 +62,22 @@ public class CameraController : MonoBehaviour
         {
             if (whitePieceObj.transform.position.x < transform.position.x)
             {
-                transform.position = new Vector3(transform.position.x - 2 * Mathf.Abs(initialOffsetOriginal.x), transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x - changeMultiplier * Mathf.Abs(initialOffsetOriginal.x), transform.position.y, transform.position.z);
             }
             else
             {
-                transform.position = new Vector3(transform.position.x + 2 * Mathf.Abs(initialOffsetOriginal.x), transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x + changeMultiplier * Mathf.Abs(initialOffsetOriginal.x), transform.position.y, transform.position.z);
             }
         }
         else
         {
             if (whitePieceObj.transform.position.z < transform.position.z)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2 * Mathf.Abs(initialOffsetOriginal.z));
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - changeMultiplier * Mathf.Abs(initialOffsetOriginal.z));
             }
             else
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2 * Mathf.Abs(initialOffsetOriginal.z));
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + changeMultiplier * Mathf.Abs(initialOffsetOriginal.z));
             }
         }
         

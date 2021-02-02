@@ -5,12 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FinishedGameScreen : MonoBehaviour
 {
-    void Update()
+    public void GoToMainMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu")
-        {
-            //Destroy(GameObject.FindGameObjectWithTag("Music"));
-            SceneManager.LoadScene("MainMenu");
-        }
+        SceneManager.LoadScene("MainMenu");
     }
 }
