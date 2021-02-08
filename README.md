@@ -10,8 +10,5 @@ Phycics can be used to player's advantage. Attacked enemy piece will get kicked 
 See gameplay video:
 https://youtu.be/t7GGHP-ZYOI
 
-You can download the game for free here:
-https://drive.google.com/drive/folders/13mpjq-rz0PLzUeZUoUSTbdtoyzAdxEkw?usp=sharing
-
-Or you can play it in your browser here:
-https://play.unity.com/mg/other/chess_crawler_webgl
+Buy Chess Crawler for Android:
+https://play.google.com/store/apps/details?id=com.MichermanStudios.ChessCrawler
